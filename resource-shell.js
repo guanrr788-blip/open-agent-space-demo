@@ -9,7 +9,7 @@
   dialog.innerHTML='<div class="resource-dialog-bar"><strong>沙箱配置</strong><button type="button" aria-label="关闭沙箱配置">关闭 ×</button></div><div class="resource-dialog-content"></div>';
   document.body.append(dialog);dialog.querySelector('button').onclick=()=>dialog.close();
   function send(frame,type,payload={}){frame?.contentWindow?.postMessage({source:'oas-approved-shell',type,...payload},location.origin);}
-  function frameFor(view){const frame=document.createElement('iframe');frame.title=modules[view]||'资源配置';frame.src=new URL('client-reference/pages.html',document.baseURI).href+'#'+view;return frame;}
+  function frameFor(view){const frame=document.createElement('iframe');frame.title=modules[view]||'资源配置';frame.src=new URL('client-reference/pages.html?v=orbital-v2',document.baseURI).href+'#'+view;return frame;}
   function snapshot(){
     agents=readAgents();
     return agents.map(a=>{const c=loadAgentConfiguration(a);return {id:a.id,name:c.name,template:c.framework,environment:c.environment,description:c.description,prompt:c.systemPrompt,model:c.model,skills:c.skills.map(id=>({call:'phone',message:'sms',cloud:'cloud_disk'})[id]||id),sandbox:c.sandbox==='browser'?'sb_browser':c.sandbox,knowledgeEnabled:c.knowledgeLibrary,memoryEnabled:c.memoryLibrary,version:c.version,status:({'运行中':'running','准备中':'starting','异常':'error'})[a.status],aic:a.aic,ownerPhone:a.ownerPhone,updated:a.updatedAt};});

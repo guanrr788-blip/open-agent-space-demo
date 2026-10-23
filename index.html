@@ -288,7 +288,7 @@
     }
     function readRoute() {
       const [view, query] = location.hash.slice(1).split('?');
-      return {view:view || 'agents',agentId:new URLSearchParams(query || '').get('agent') || originalAgentId};
+      return {view:view || 'quick',agentId:new URLSearchParams(query || '').get('agent') || originalAgentId};
     }
     function agentLink(view, id = activeAgentId) {
       return '#' + view + (id === originalAgentId ? '' : '?agent=' + encodeURIComponent(id));
@@ -1048,5 +1048,5 @@
     setPageView();
     window.addEventListener('hashchange', setPageView);
   </script>
-<script src="./resource-shell.js"></script></body>
+<script src="./resource-shell.js?v=orbital-v2"></script></body>
 </html>
