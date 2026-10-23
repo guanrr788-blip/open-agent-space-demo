@@ -1,0 +1,1052 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>编辑配置 · 行业研究助手 · Open Agent Space</title>
+  <style>
+    :root{font-family:"Microsoft YaHei","PingFang SC",Arial,sans-serif;color:#182438;background:#f6f7fb;font-synthesis:none;--blue:#4058df;--muted:#97a2b9;--border:#e7eaf3}
+    *{box-sizing:border-box}body{margin:0}button,a{-webkit-tap-highlight-color:transparent}button{font:inherit}a{color:inherit;text-decoration:none}button{cursor:pointer}button:focus-visible,a:focus-visible{outline:2px solid #6a7df0;outline-offset:4px}svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.65;stroke-linecap:round;stroke-linejoin:round;flex:none}.symbols{position:absolute;width:0;height:0;overflow:hidden}
+    .sidebar{position:fixed;inset:0 auto 0 0;width:264px;background:#fff;border-right:1px solid #edf0f7;display:flex;flex-direction:column;padding:28px 16px 20px;z-index:2}.brand{display:flex;align-items:center;gap:12px;padding:0 6px}.brand svg{color:#4b64e9;width:32px;height:36px}.brand-name{font-size:21px;font-weight:700;color:#202a3c;white-space:nowrap;letter-spacing:-.5px}.brand-subtitle{font-size:12px;color:#8b97af;margin-top:3px}.nav-caption{font-size:14px;color:#9ca6ba;margin:48px 18px 14px}.navigation{display:flex;flex-direction:column;gap:4px}.nav-item{display:flex;align-items:center;gap:16px;height:52px;padding:0 18px;color:#7e8ba5;font-size:18px;border-radius:8px}.nav-item svg{width:22px;height:22px}.nav-item.active{background:#edf0ff;color:#425de7;font-weight:600}.nav-item:hover{background:#f3f5fc}.nav-item.active:hover{background:#edf0ff}.space{margin-top:auto;border-top:1px solid #edf0f7;padding:22px 14px 0;display:flex;gap:14px;align-items:center;color:#8290aa}.space-title{font-size:14px;color:#53627d}.space-subtitle{font-size:12px;margin-top:3px}.topbar{margin-left:264px;height:76px;border-bottom:1px solid #ebedf5;background:#fff;display:flex;align-items:center;justify-content:space-between;padding:0 54px 0 58px}.breadcrumbs{display:flex;gap:16px;align-items:center;font-size:14px;color:#9ca5ba}.breadcrumbs svg{width:12px;height:12px}.breadcrumbs span:nth-of-type(2){color:#6a758d}.topbar-end{display:flex;gap:30px;align-items:center;color:#7d89a2;font-size:14px}.user-avatar{display:grid;place-items:center;width:34px;height:34px;border-radius:50%;background:#e9edf9;color:#65759b;font-size:14px;font-weight:600}
+    main{margin-left:264px;padding:40px 54px 60px 58px}.back{display:inline-flex;align-items:center;gap:8px;color:#8995ad;font-size:14px;line-height:22px}.back svg{width:16px;height:16px}.hero{display:flex;gap:16px;align-items:flex-start;margin-top:24px}.agent-avatar{width:52px;height:52px;border-radius:10px;background:#edf0ff;color:#6981ed;display:grid;place-items:center;margin-top:7px;flex:none}.agent-avatar svg{width:25px;height:25px}.hero-content{min-width:0;flex:1}.hero-top{display:flex;align-items:center;justify-content:space-between;gap:20px;min-height:44px}.name-and-id{display:flex;align-items:center;gap:20px;min-width:0;white-space:nowrap;flex:1}h1{font-size:28px;font-weight:700;line-height:42px;letter-spacing:-.6px;margin:0;flex:0 1 auto;min-width:0;overflow:hidden;text-overflow:ellipsis}.agent-id{display:inline-flex;align-items:center;flex:none;gap:7px;color:#98a2b7;font-size:12px;font-weight:400;line-height:20px;white-space:nowrap}.agent-id code{font-family:Consolas,"SFMono-Regular",monospace;font-size:12px;letter-spacing:0;color:#8f9bb2}.copy-id{display:inline-flex;align-items:center;justify-content:center;width:23px;height:23px;color:#a5afc3;background:none;border:0;border-radius:4px;padding:4px}.copy-id svg{width:14px;height:14px}.copy-id:hover{background:#e9edf8;color:#5269da}.copy-id[data-copied="true"]{color:#2d9a85}.actions{display:flex;gap:10px;flex:none;margin-left:auto}.action{height:36px;border-radius:6px;border:1px solid #e1e6f1;background:#fff;color:#5e6b86;padding:0 14px;display:inline-flex;align-items:center;justify-content:center;gap:7px;font-size:13px;white-space:nowrap}.action.primary{background:#4058df;color:#fff;border-color:#4058df;box-shadow:0 2px 4px #354cb21a}.action.primary:hover{background:#354ccf}.action.secondary:hover{background:#fafbff}.action svg{width:18px;height:18px}
+    .metadata{display:flex;align-items:center;gap:0;flex-wrap:nowrap;overflow-x:auto;scrollbar-width:thin;scrollbar-color:#d9dfee transparent;margin-top:12px;padding-bottom:8px;white-space:nowrap;max-width:100%;font-size:12px;line-height:24px}.meta-item{display:inline-flex;align-items:center;gap:5px;flex:none}.meta-item+.meta-item{border-left:1px solid #dfe4ef;margin-left:8px;padding-left:8px}.meta-label{color:#98a3b9}.meta-value{color:#65748f}.tag{display:inline-flex;align-items:center;line-height:23px;padding:0 7px;border-radius:4px}.tag.framework{background:#eef1f6;color:#8390aa}.tag.version{background:#edf0ff;color:#667be3}.tag.running{background:#eaf6f1;color:#4a9b8e}.tabs{display:flex;gap:34px;align-items:center;height:59px;margin-top:12px;border-bottom:1px solid #e3e7f1;color:#929eb4;font-size:16px}.tab{position:relative;align-self:stretch;display:flex;align-items:center;padding:0 1px}.tab.active{color:#4058df;font-weight:600}.tab.active:after{content:"";position:absolute;bottom:-1px;left:0;right:0;height:2px;background:#4c63ed}.tab:hover{color:#4058df}
+    .content-grid{display:grid;grid-template-columns:minmax(0,1.65fr) minmax(0,1fr);gap:24px;margin-top:30px;align-items:start}.left-column{display:flex;flex-direction:column;gap:24px}.card{background:#fff;border:1px solid var(--border);border-radius:9px;padding:28px}.card-heading{display:flex;align-items:center;justify-content:space-between;gap:20px}.card h2{font-size:16px;line-height:24px;font-weight:600;margin:0}.text-link{font-size:14px;color:#647be8;line-height:24px;white-space:nowrap}.text-link:hover{color:#4058df}.basic-card{min-height:188px}.description{margin:24px 0 0}.description dt{font-size:14px;color:#97a3bb;line-height:22px}.description dd{font-size:14px;color:#637491;line-height:25px;margin:8px 0 0}.recent-card{min-height:192px}.session{display:flex;align-items:center;gap:12px;margin-top:38px}.session-icon{display:grid;place-items:center;width:34px;height:34px;background:#f1f4fa;border-radius:6px;color:#8b9ac4;flex:none}.session-icon svg{width:18px;height:18px}.session-title{font-size:14px;color:#40516d;line-height:22px}.session-meta{font-size:13px;color:#9ba6bb;line-height:22px;margin-top:2px}.continue{margin-left:auto}.start-card{min-height:172px;background:#fafbfe}.start-card h2{font-size:14px}.start-card p{font-size:14px;line-height:24px;color:#99a5bc;margin:20px 0 16px}.start-link{display:inline-flex;align-items:center;gap:7px}.start-link svg{width:17px;height:17px}
+    .content-only .sidebar,.content-only .topbar{display:none}.content-only main{margin-left:0;padding:40px 46px 60px}.content-only .hero{margin-top:24px}.content-only .tabs{margin-top:12px}
+    @media(max-width:1500px){.topbar{padding-left:40px;padding-right:40px}main{padding-left:40px;padding-right:40px}.name-and-id{gap:14px}h1{font-size:26px}.actions{gap:10px}.action{padding:0 12px}.metadata{font-size:11.5px}.meta-item{gap:5px}.meta-item+.meta-item{margin-left:8px;padding-left:8px}}
+    @media(max-width:1100px){.sidebar{width:220px}.brand-name{font-size:18px}.brand{gap:9px}.nav-item{font-size:16px}.topbar,main{margin-left:220px}.topbar{padding-left:28px;padding-right:28px}main{padding-left:28px;padding-right:28px}.hero-top{align-items:flex-start;flex-direction:column;gap:12px}.content-grid{grid-template-columns:minmax(0,1.55fr) minmax(0,1fr)}.card{padding:24px}.card-heading{gap:10px}.content-only .hero-top{flex-direction:row;align-items:center}}
+    .agent-phone{display:inline-flex;align-items:center;flex:none;gap:7px;color:#98a2b7;font-size:12px;font-weight:400;line-height:20px;white-space:nowrap}.agent-phone svg{width:14px;height:14px;fill:currentColor;stroke:none}
+    .breadcrumbs [aria-current="page"]{color:#53627d;font-weight:500}
+    [hidden]{display:none!important}
+    .configuration{display:flex;flex-direction:column;gap:24px;margin-top:30px;scroll-margin-top:24px}.config-section{background:#fff;border:1px solid var(--border);border-radius:10px;padding:28px 32px}.config-section h2{font-size:18px;line-height:28px;margin:0;font-weight:600}.config-heading{display:flex;justify-content:space-between;align-items:center;gap:24px}.config-heading-note{font-size:13px;color:#98a3b9;line-height:22px}.required{color:#e16f7e;margin-left:4px}.config-fields{display:flex;flex-direction:column;gap:24px;margin-top:24px}.field{display:flex;flex-direction:column;gap:8px;min-width:0}.field-label{font-size:14px;line-height:24px;color:#596c89}.field input[type="text"],.field textarea,.field select{width:100%;border:1px solid #dce2f0;border-radius:6px;background:#fff;color:#30435e;font:inherit;font-size:14px;line-height:24px;padding:10px 14px;outline:none;transition:border-color .15s,box-shadow .15s}.field input[type="text"],.field select{height:44px}.field textarea{resize:vertical;min-height:88px}.field textarea.prompt{min-height:140px}.field input:focus,.field textarea:focus,.field select:focus{border-color:#7186ed;box-shadow:0 0 0 3px #647ced12}.field select{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%237789a6' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 14px center;padding-right:40px}.field-help{font-size:12px;line-height:22px;color:#97a4ba;margin:0}.config-description{font-size:14px;line-height:24px;color:#96a3b9;margin:14px 0 0}.config-checkbox{display:inline-flex;align-items:center;gap:10px;font-size:14px;color:#788ba8;white-space:nowrap;cursor:pointer}.config-checkbox input,.skill-card input{width:16px;height:16px;accent-color:#405cdf;cursor:pointer;margin:0;flex:none}
+    .image-options{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:24px}.image-option{position:relative;display:flex;flex-direction:column;border:1px solid #dce2f0;border-radius:9px;padding:24px;min-height:188px;cursor:pointer;background:#fff}.image-option:has(input:checked){background:#f6f8ff;border-color:#627bf0;box-shadow:inset 0 0 0 1px #627bf0}.image-option:focus-within{outline:2px solid #a3b2ff;outline-offset:3px}.image-option input{position:absolute;opacity:0;width:1px;height:1px}.image-option-top{display:flex;align-items:center;gap:12px;padding-right:30px}.image-icon{width:46px;height:46px;border-radius:10px;background:#edf1ff;color:#597be5;display:grid;place-items:center;flex:none}.image-icon svg{width:27px;height:27px}.image-icon.hermes{background:#f0ebfc;color:#a087db}.image-eyebrow{font-size:13px;color:#8a9cba}.image-option strong{font-size:23px;line-height:32px;color:#365777;margin-top:20px}.image-option p{margin:12px 0 0;font-size:14px;line-height:24px;color:#8a9dbb}.radio-indicator{position:absolute;top:35px;right:24px;width:21px;height:21px;border-radius:50%;border:1px solid #d4def1;display:grid;place-items:center;color:#fff;background:#fff}.radio-indicator svg{width:14px;height:14px;opacity:0}.image-option input:checked~.radio-indicator{border-color:#4d6de0;background:#4d6de0}.image-option input:checked~.radio-indicator svg{opacity:1}
+    .skill-tabs{display:flex;align-items:center;gap:26px;margin:24px 0}.skill-tab{border:0;background:transparent;padding:3px 0;color:#9ba7bd;font-size:14px;font-weight:400;line-height:24px}.skill-tab[aria-selected="true"]{color:#365ce9;font-weight:600}.skills-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}.skill-card{display:flex;align-items:flex-start;gap:14px;border:1px solid #e0e6f2;background:#fff;border-radius:8px;padding:20px;min-height:148px;cursor:pointer}.skill-card:has(input:checked){border-color:#b6c3ff;background:#f7f9ff}.skill-card input{margin-top:7px}.skill-icon{width:36px;height:36px;border-radius:7px;background:#f1f4fb;color:#7f94bd;display:grid;place-items:center;flex:none}.skill-icon svg{width:21px;height:21px}.skill-copy{min-width:0}.skill-copy strong{font-size:15px;line-height:26px;font-weight:600;color:#21354f}.skill-copy p{font-size:14px;line-height:24px;color:#8b9cb7;margin:4px 0 12px}.skill-source{font-size:13px;color:#8798b5;line-height:22px}.sandbox-create{height:36px;padding:0 12px;font-size:13px;gap:8px}.sandbox-note{display:flex;align-items:center;gap:10px;font-size:14px;line-height:24px;color:#9aa8bd;margin:24px 0 0}.sandbox-note svg{width:17px;height:17px}
+    .library-heading{display:flex;align-items:center;justify-content:space-between;gap:24px}.library-heading .config-description{margin-top:4px;font-size:13px}.library-details{display:flex;align-items:flex-start;gap:18px;border-top:1px solid #e6ebf5;margin-top:24px;padding-top:24px}.library-icon{display:grid;place-items:center;width:44px;height:44px;border-radius:8px;background:#f2f5fc;color:#8297c0;flex:none}.library-icon svg{width:23px;height:23px}.library-copy{flex:1;min-width:0}.library-copy strong{font-size:16px;line-height:26px;font-weight:600}.library-copy p{font-size:14px;line-height:24px;color:#90a1bc;margin:8px 0 0}.library-status{margin-left:auto;background:#eaf7f2;color:#42a492;border-radius:4px;padding:3px 8px;font-size:13px;line-height:21px;white-space:nowrap}.identity-note{display:flex;align-items:flex-start;gap:18px;background:#f8faff}.identity-note>svg{color:#4164ef;margin-top:3px;width:24px;height:24px}.identity-note h2{font-size:16px;line-height:26px}.identity-note p{font-size:14px;line-height:24px;color:#91a2bc;margin:12px 0 0}.configuration-footer{display:flex;justify-content:space-between;align-items:center;gap:20px;border:1px solid var(--border);border-radius:9px;background:#fff;padding:18px 28px}.current-version{font-size:13px;color:#96a3ba}.apply-button{display:inline-flex;align-items:center;justify-content:center;gap:9px;min-height:40px;padding:0 18px;background:#3956da;border:1px solid #3956da;border-radius:6px;box-shadow:0 2px 4px #354cb21a;color:#fff;font-size:14px}.apply-button:hover{background:#304dcc}.apply-button svg{width:20px;height:20px}
+    @media(max-width:1200px){.config-section{padding:26px}.image-option{padding:20px}.image-option-top{gap:10px}.image-options{gap:16px}.image-option p{font-size:13px}.skill-card{padding:18px;gap:11px}.skill-copy p{font-size:13px}.library-heading{align-items:flex-start}.library-heading .config-description{max-width:540px}}
+    .chat-view main{padding-bottom:24px}.chat-workspace{display:grid;grid-template-columns:244px minmax(0,1fr);height:calc(100dvh - 302px);min-height:420px;margin-top:28px;border:1px solid #e0e6f2;border-radius:10px;background:#fff;overflow:hidden}.chat-sidebar{display:flex;flex-direction:column;min-height:0;padding:16px;border-right:1px solid #dfe5f1;background:#fbfcff}.new-chat{display:flex;align-items:center;justify-content:center;gap:10px;width:100%;height:38px;flex:none;border:1px solid #dce3f0;border-radius:6px;color:#506481;background:#fff;font-size:14px}.new-chat svg{width:18px;height:18px}.new-chat:hover{border-color:#a9b8ef;background:#f7f9ff}.chat-list-heading{font-size:13px;line-height:22px;color:#99a5bb;margin:24px 8px 12px}.chat-sessions{display:flex;flex-direction:column;gap:8px;overflow-y:auto;min-height:0}.chat-session{width:100%;padding:13px 12px;border:0;border-radius:7px;background:transparent;text-align:left;color:#798aa6;cursor:pointer}.chat-session[aria-current="true"]{background:#edf1ff;color:#3e5fe0}.chat-session-title{display:block;font-size:14px;line-height:24px}.chat-session-time{display:block;font-size:12px;line-height:20px;color:#91a1bd;margin-top:4px}.chat-main{display:flex;flex-direction:column;min-width:0;min-height:0}.chat-heading{display:flex;align-items:center;gap:16px;flex:none;min-height:56px;padding:0 22px;border-bottom:1px solid #e3e9f4}.chat-heading-title{display:flex;align-items:center;gap:12px;font-size:15px;color:#526481;min-width:0}.chat-heading-title svg{width:18px;height:18px;color:#768aae}.chat-heading-meta{display:flex;align-items:center;gap:20px;margin-left:auto;flex:none;color:#62748f;font-size:14px}.chat-stage{display:flex;flex:1;min-height:0;overflow-y:auto;overscroll-behavior:contain}.chat-welcome{display:flex;flex-direction:column;align-items:center;justify-content:center;margin:auto;padding:24px;text-align:center;max-width:100%}.chat-welcome-avatar{display:grid;place-items:center;width:56px;height:56px;border-radius:11px;background:#edf1ff;color:#3f64ec;flex:none}.chat-welcome-avatar svg{width:28px;height:28px}.chat-welcome h2{font-size:22px;line-height:32px;font-weight:600;color:#172940;margin:20px 0 8px}.chat-welcome p{font-size:14px;line-height:24px;color:#8c9db8;margin:0}.chat-suggestions{display:flex;align-items:center;justify-content:center;gap:12px;flex-wrap:wrap;margin-top:20px}.chat-suggestion{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:42px;padding:0 16px;border:1px solid #dce4f2;border-radius:6px;background:#fff;color:#899ab6;font-size:14px;line-height:22px}.chat-suggestion:hover{color:#4c68dc;border-color:#bdcafa;background:#fafbff}.chat-suggestion svg{width:15px;height:15px}.chat-messages{display:flex;flex-direction:column;align-items:flex-end;gap:16px;width:100%;padding:24px}.chat-message{max-width:min(720px,85%);padding:12px 16px;background:#edf1ff;border-radius:12px 12px 4px 12px;color:#354c6c;font-size:14px;line-height:24px;white-space:pre-wrap;overflow-wrap:anywhere}.chat-composer{display:flex;flex-direction:column;flex:none;margin:0 20px 20px;border:1px solid #dce4f2;border-radius:8px;padding:12px 14px;background:#fff}.chat-composer:focus-within{border-color:#9daeed;box-shadow:0 0 0 2px #647ced0a}.chat-composer textarea{width:100%;min-height:52px;border:0;outline:0;padding:0;background:transparent;resize:none;font:inherit;font-size:14px;line-height:24px;color:#465c7b}.chat-composer textarea::placeholder{color:#99a3b5}.chat-composer-footer{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-top:8px}.chat-send-hint{font-size:12px;line-height:20px;color:#93a1ba}.chat-send{display:grid;place-items:center;width:36px;height:36px;padding:0;background:#3456ec;border:1px solid #3456ec;border-radius:6px;color:#fff;box-shadow:0 2px 4px #3456ec12}.chat-send:hover{background:#2c4cda}.chat-send svg{width:21px;height:21px}.content-only.chat-view .chat-workspace{height:calc(100dvh - 226px)}
+    @media(max-width:1500px){.chat-workspace{grid-template-columns:220px minmax(0,1fr)}.chat-heading{padding:0 18px}.chat-heading-meta{gap:14px}.chat-welcome{padding:20px}.chat-welcome h2{font-size:20px}.chat-suggestion{font-size:13px;padding:0 12px}.chat-composer{margin-right:18px;margin-left:18px}}
+    .create-view main>.back,.create-view main>.hero{display:none}.create-view .topbar{position:sticky;top:0;z-index:3}.create-page-heading{display:flex;align-items:flex-start;justify-content:space-between;gap:24px;margin-top:22px}.create-page-heading h1{font-size:30px;line-height:44px;letter-spacing:-.5px;overflow:visible}.create-page-heading p{font-size:15px;line-height:26px;color:#8294b2;margin:8px 0 0}.cancel-create{height:40px;padding:0 18px;font-size:14px;margin-top:1px}.create-steps{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border:1px solid var(--border);border-radius:9px;background:#fff;overflow:hidden;margin:32px 0 28px}.create-step{position:relative;display:flex;align-items:center;justify-content:center;gap:12px;min-height:66px;border:0;background:#fff;color:#899bb9;font-size:14px;padding:12px 8px}.create-step+.create-step{border-left:1px solid #edf0f7}.create-step[aria-current="step"]{background:#f3f5ff;color:#3e5bea}.create-step[aria-current="step"]:after{content:"";position:absolute;bottom:0;left:0;right:0;height:3px;background:#405ce8}.step-number{display:grid;place-items:center;width:25px;height:25px;border:1px solid #dce4f3;border-radius:50%;font-size:12px;background:#fff}.create-step[aria-current="step"] .step-number{background:#3e5cde;border-color:#3e5cde;color:#fff}.create-step[data-complete="true"] .step-number{background:#edf2ff;border-color:#edf2ff;color:#6d87bd}.step-number svg{width:16px;height:16px}.create-layout{display:grid;grid-template-columns:minmax(0,1fr) minmax(270px,24%);gap:28px;align-items:start}.create-form,.create-panel,#create-libraries{display:flex;flex-direction:column;gap:24px;min-width:0}.create-environment{margin-top:30px;padding-top:26px;border-top:1px solid #e6ebf5}.environment-options .image-option{min-height:148px;padding:20px}.environment-options .image-icon{width:38px;height:38px;border-radius:8px}.environment-options .image-icon svg{width:23px;height:23px}.environment-options .image-icon.android{color:#4ea78a;background:#eaf7f1}.environment-options .image-option strong{font-size:17px;line-height:26px;margin-top:16px}.environment-options .image-option p{margin-top:6px;font-size:13px}.environment-options .radio-indicator{top:28px;right:20px}.create-preview{position:sticky;top:100px;min-width:0;background:#fff;border:1px solid var(--border);border-radius:9px;padding:24px}.preview-caption{font-size:12px;line-height:22px;color:#9ba6bb;margin:0}.create-preview h2{font-size:20px;line-height:30px;color:#182d47;margin:14px 0 24px;overflow-wrap:anywhere}.create-preview dl{display:flex;flex-direction:column;gap:20px;margin:0}.create-preview dl>div{display:flex;justify-content:space-between;align-items:baseline;gap:18px;font-size:13px;line-height:20px}.create-preview dt{color:#98a5bc;flex:none}.create-preview dd{color:#526c8e;text-align:right;margin:0;overflow-wrap:anywhere}.preview-identity{display:flex;align-items:flex-start;gap:8px;border-top:1px solid #e4eaf4;padding-top:20px;margin-top:26px;font-size:12px;line-height:22px;color:#8a9fbe}.preview-identity svg{width:17px;height:17px;margin-top:2px}.create-footer{position:sticky;bottom:16px;z-index:1;display:flex;justify-content:space-between;align-items:center;gap:20px;border:1px solid var(--border);border-radius:9px;background:#fff;padding:18px 26px;box-shadow:0 -6px 24px #f6f7fbcc}.create-footer>span{font-size:13px;line-height:22px;color:#98a7bf}.create-footer>div{display:flex;gap:12px}.create-footer .action{height:42px;font-size:14px;padding:0 16px}.create-footer .apply-button{height:42px;padding:0 18px}.create-information{display:flex;align-items:flex-start;gap:16px;border:1px solid #d9e4ff;border-radius:7px;background:#eff4ff;color:#6c8dc5;padding:20px 24px}.create-information>svg{width:23px;height:23px;flex:none;margin-top:2px}.create-information p{font-size:14px;line-height:24px;margin:0;color:#5c82c2}.create-information span{display:block;font-size:13px;line-height:24px;color:#91a8cf;margin-top:6px}.create-confirm-note{align-items:center;padding:16px 20px}.create-confirm-note>svg{margin:0;width:20px;height:20px}.create-confirm-note p{font-size:13px}.create-sandbox-details{display:flex;align-items:flex-start;gap:16px;border-top:1px solid #e6ebf5;padding-top:22px;margin-top:24px}.create-sandbox-details .action{font-size:12px;height:34px;padding:0 12px;margin-left:auto}.create-sandbox-details .library-copy p{font-size:13px;line-height:23px;margin-top:6px}.sandbox-config-summary:focus{outline:2px solid #91a6ef;outline-offset:4px;border-radius:2px}.library-status.disabled{background:#f2f4f8;color:#9aa6b9}.field-error{font-size:12px;line-height:20px;color:#e56877}.field input[aria-invalid="true"]{border-color:#e56877}.create-pending{background:#edf2ff;color:#5d7bdb;border-radius:4px;padding:5px 9px;font-size:12px;line-height:18px}.create-confirmation{display:grid;grid-template-columns:1fr 1fr;column-gap:28px;row-gap:26px;margin:28px 0 0}.create-confirmation>div{min-width:0}.create-confirmation dt{font-size:13px;line-height:22px;color:#96a5bd}.create-confirmation dd{font-size:14px;line-height:25px;color:#506b8d;margin:10px 0 0;white-space:pre-wrap;overflow-wrap:anywhere;min-height:25px}.confirmation-wide{grid-column:1/-1}.confirmation-aic{border-top:1px solid #e6ebf5;padding-top:22px}.confirmation-aic dt{display:flex;align-items:center;gap:8px;color:#6984af}.confirmation-aic dt svg{width:17px;height:17px}.market-option{min-height:90px;align-items:center}.market-option input{margin-top:0}.create-form .image-option{min-height:180px}.create-form .environment-options .image-option{min-height:148px}
+    #configuration .image-options,#create-image-options .image-options{grid-template-columns:repeat(3,minmax(0,1fr))}.image-option.disabled{cursor:not-allowed;background:#f5f6f9;border-color:#e5e8ef;color:#a2abbd}.image-option.disabled .image-icon{background:#e9edf3;color:#a6afbf}.image-option.disabled strong{color:#a2abbd;font-size:20px}.image-option.disabled .radio-indicator{background:#eff1f5;border-color:#dce1e9}.confirmation-aic{border:1px solid #e3e9f6;border-radius:6px;background:#f8faff;padding:14px 16px}.confirmation-aic dd{margin-top:5px}
+    @media(max-width:800px){#configuration .image-options{grid-template-columns:1fr}}
+    @media(max-width:1500px){.create-layout{grid-template-columns:minmax(0,1fr) 270px;gap:24px}.create-form .config-section{padding:26px}.create-preview{padding:22px}.create-form .image-option{padding:20px}.create-form .image-option p{font-size:13px}.create-form .skill-card{padding:17px;gap:11px}.create-form .skill-copy p{font-size:13px}.create-form .skill-icon{width:32px;height:32px}.create-page-heading h1{font-size:28px}}
+    @media(max-width:1200px){.create-layout{grid-template-columns:minmax(0,1fr) 240px;gap:20px}.create-preview{padding:20px}.create-form .image-options,.create-form .skills-grid,#create-image-options .image-options{grid-template-columns:1fr}.create-steps{margin-top:26px}.create-step{gap:8px;font-size:13px}.create-preview dl{gap:17px}.create-footer{padding:16px 20px}.create-footer>span{font-size:12px}}
+    @media(max-width:800px){.create-view .sidebar{display:none}.create-view main,.create-view .topbar{margin-left:0;padding-left:20px;padding-right:20px}.create-view .topbar{padding-left:20px;padding-right:20px}.create-layout{grid-template-columns:minmax(0,1fr)}.create-preview{position:static;grid-row:1}.create-preview dl{display:grid;grid-template-columns:1fr 1fr;gap:14px 24px}.create-preview h2{margin-bottom:18px}.preview-identity{margin-top:20px;padding-top:16px}.create-step{font-size:12px;gap:6px;min-height:62px}.step-number{width:22px;height:22px;flex:none}.create-page-heading h1{font-size:26px}.create-page-heading p{font-size:13px}.create-page-heading{gap:14px}.cancel-create{padding:0 12px;font-size:12px}.create-confirmation{grid-template-columns:1fr}.create-footer{bottom:8px;padding:14px}.create-footer>div{gap:8px}.create-footer .action,.create-footer .apply-button{padding:0 12px;font-size:13px}.create-view .breadcrumbs{gap:10px;font-size:12px}.create-view .topbar-end{gap:12px}.create-view .topbar-end a{display:none}.create-form .library-heading{flex-wrap:wrap;gap:16px}}
+    .agents-view main>.back,.agents-view main>.hero{display:none}.agents-page-heading{display:flex;justify-content:space-between;align-items:flex-start;gap:24px}.agents-page-heading h1{font-size:28px;line-height:42px;letter-spacing:-.5px}.agents-page-heading p{font-size:14px;line-height:24px;color:#8b9ab4;margin:8px 0 0}.agents-page-heading .apply-button{height:40px;font-size:13px;padding:0 16px}.agent-table-card{background:#fff;border:1px solid var(--border);border-radius:9px;overflow:hidden;margin-top:32px}.agent-table-toolbar{display:flex;align-items:center;justify-content:space-between;gap:24px;padding:22px}.agent-search{display:flex;align-items:center;gap:10px;height:40px;width:294px;max-width:100%;border:1px solid #dce3f0;border-radius:6px;padding:0 12px;color:#96a4bf}.agent-search:focus-within{border-color:#7f94ed;box-shadow:0 0 0 2px #647ced12}.agent-search svg{width:17px;height:17px}.agent-search input{width:100%;min-width:0;outline:none;border:0;font:inherit;font-size:13px;line-height:24px;color:#506382;background:transparent;padding:0}.agent-search input::placeholder{color:#8c9bb3}.agent-refresh{display:grid;place-items:center;flex:none;width:38px;height:38px;padding:0;border:1px solid #dce3f0;border-radius:6px;color:#687d9e;background:#fff}.agent-refresh:hover{background:#f7f9ff;border-color:#aebee8}.agent-refresh svg{width:20px;height:20px}.agent-table-scroll{overflow-x:auto}.agent-table{width:100%;min-width:850px;border-collapse:collapse;table-layout:fixed;text-align:left}.agent-table thead{height:46px;background:#fafbfe;border-top:1px solid #e6eaf3;border-bottom:1px solid #e6eaf3}.agent-table th{font-size:12px;font-weight:400;color:#92a0b9;line-height:20px;padding:12px 22px}.agent-table tbody tr{height:98px;border-bottom:1px solid #e9edf5}.agent-table tbody tr:last-child{border-bottom:0}.agent-table td{padding:18px 22px;font-size:13px;line-height:22px;color:#354c6a;vertical-align:middle}.agent-table .agent-cell{display:flex;align-items:center;gap:12px;min-width:0}.agent-list-avatar{display:grid;place-items:center;flex:none;width:40px;height:40px;border-radius:7px;background:#edf1ff;color:#6680e8}.agent-list-avatar.hermes{background:#ecf7f2;color:#43a38c}.agent-list-avatar svg{width:20px;height:20px}.agent-cell-copy{min-width:0}.agent-name-link{display:block;width:fit-content;max-width:100%;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;font-size:14px;font-weight:600;color:#293d58;line-height:24px}.agent-name-link:hover{color:#405cdf}.agent-list-id{display:flex;align-items:center;gap:5px;color:#9ba6bb;font-size:11px;line-height:18px;margin-top:2px}.agent-list-id code{font-family:Consolas,"SFMono-Regular",monospace;font-size:11px;letter-spacing:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.agent-list-id .copy-id{width:18px;height:18px;padding:3px}.agent-list-id .copy-id svg{width:11px;height:11px}.list-framework{display:inline-flex;line-height:23px;padding:0 7px;border-radius:4px;background:#f1f3f8;color:#8c9bb4;font-size:11px}.agent-status{display:inline-flex;align-items:center;border-radius:4px;padding:2px 7px;line-height:21px;font-size:11px;white-space:nowrap;background:#ebf7f2;color:#4b9c8e}.agent-status.preparing{background:#edf1ff;color:#667de3}.agent-status.error{background:#fff1f2;color:#d9808c}.agent-table .agent-updated{font-size:11px;color:#97a6bf;white-space:nowrap}.agent-row-actions{display:flex;align-items:center;gap:18px;white-space:nowrap;font-size:12px;color:#536fea}.agent-row-actions a:hover{color:#304fd0}.agent-row-actions [aria-disabled="true"]{color:#a8b5e5;cursor:not-allowed}.agent-table-footer{display:flex;align-items:center;justify-content:space-between;gap:20px;border-top:1px solid #e6eaf3;padding:18px 22px;color:#98a6be;font-size:11px;line-height:20px}.agent-pagination{display:flex;align-items:center;gap:8px}.agent-pagination-label{margin-right:2px;white-space:nowrap}.agent-page-button,.agent-page-number{display:grid;place-items:center;width:31px;height:31px;border:1px solid #dce3f1;border-radius:5px;background:#fff;color:#8292af;font-size:12px}.agent-page-button svg{width:13px;height:13px}.agent-page-button:disabled{opacity:.45;cursor:default}.agent-page-number{background:#edf2ff;border-color:#cbd8ff;color:#5675dc}.agent-empty{text-align:center;height:260px;color:#99a7bc!important}.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}.tag.running.preparing{background:#edf1ff;color:#667de3}.tag.running.error{background:#fff1f2;color:#d9808c}.action[aria-disabled="true"]{opacity:.45;cursor:not-allowed;box-shadow:none}.chat-send:disabled{opacity:.45;cursor:not-allowed}
+    .agent-table{min-width:1120px}.agent-table .agent-cell{align-items:flex-start}.agent-cell-copy{flex:1}.agent-list-avatar{margin-top:2px}.agent-list-aic{font-size:10.5px}.agent-list-id .identifier-label{flex:0 0 20px}.agent-list-aic code{font-size:10.5px;min-width:0}.agent-table .agent-sandbox{color:#687e9f;white-space:nowrap}.agent-table .agent-sandbox.unlinked{color:#a0acc0}
+    @media(max-width:1500px){.agent-table th,.agent-table td{padding-left:18px;padding-right:18px}.agent-table-toolbar,.agent-table-footer{padding-left:18px;padding-right:18px}.agent-row-actions{gap:14px}}
+    @media(max-width:800px){.agents-view .sidebar{display:none}.agents-view main,.agents-view .topbar{margin-left:0;padding-left:20px;padding-right:20px}.agents-view .breadcrumbs{gap:10px;font-size:12px}.agents-view .topbar-end{gap:12px}.agents-view .topbar-end>a{display:none}.agents-page-heading h1{font-size:26px}.agents-page-heading p{font-size:12px}.agents-page-heading .apply-button{font-size:12px;padding:0 12px}.agent-table-footer{gap:12px}.agent-pagination{gap:6px}}
+    .agent-table{min-width:1180px}.agent-row-actions{gap:12px}.agent-row-actions>*{flex:none}.agent-delete{border:0;background:none;padding:0;font:inherit;line-height:24px;color:#d57882}.agent-delete:hover{color:#c95362}.agent-table th:last-child,.agent-table td:last-child{position:sticky;right:0;z-index:1;background:#fff;box-shadow:-7px 0 12px -12px #62749a}.agent-table th:last-child{background:#fafbfe}.agent-delete-dialog{width:420px;max-width:calc(100vw - 40px);border:1px solid #e0e6f1;border-radius:12px;padding:28px;color:#263a54;box-shadow:0 16px 60px #25344b26}.agent-delete-dialog::backdrop{background:#17253b55}.agent-delete-dialog h2{font-size:19px;line-height:28px;margin:0 0 20px}.agent-delete-dialog p{font-size:14px;line-height:25px;margin:0;overflow-wrap:anywhere}.agent-delete-dialog strong{font-weight:600}.agent-delete-dialog .agent-delete-note{font-size:13px;color:#94a0b5;margin-top:8px}.agent-delete-dialog-actions{display:flex;justify-content:flex-end;gap:12px;margin-top:26px}.agent-delete-dialog-actions .action{min-width:72px;height:38px;font-size:13px}.agent-delete-confirm{background:#d65e6e;border-color:#d65e6e;color:#fff}.agent-delete-confirm:hover{background:#c95060}
+    .agent-table th:last-child{text-align:center}.agent-row-actions{justify-content:center}
+  </style>
+<link rel="stylesheet" href="./resource-shell.css"></head>
+<body>
+  <svg class="symbols" aria-hidden="true"><defs>
+    <symbol id="layers" viewBox="0 0 24 24"><path d="m12 2 10 5.5L12 13 2 7.5 12 2Z"/><path d="m2 12 10 5.5L22 12M2 17l10 5 10-5"/></symbol>
+    <symbol id="arrow-left" viewBox="0 0 24 24"><path d="M19 12H5m6-6-6 6 6 6"/></symbol>
+    <symbol id="arrow-right" viewBox="0 0 24 24"><path d="M5 12h14m-6-6 6 6-6 6"/></symbol>
+    <symbol id="chevron" viewBox="0 0 24 24"><path d="m9 5 7 7-7 7"/></symbol>
+    <symbol id="command" viewBox="0 0 24 24"><path d="M9 7V5a3 3 0 1 0-3 3h12a3 3 0 1 0-3-3v14a3 3 0 1 0 3-3H6a3 3 0 1 0 3 3V7Z"/></symbol>
+    <symbol id="chip" viewBox="0 0 24 24"><rect x="5" y="5" width="14" height="14" rx="2"/><path d="M9 9h6v6H9zM9 2v3m6-3v3M9 19v3m6-3v3M2 9h3m-3 6h3m14-6h3m-3 6h3"/></symbol>
+    <symbol id="zap" viewBox="0 0 24 24"><path d="m13 2-10 12h8l-1 8L21 9h-8l1-7Z"/></symbol>
+    <symbol id="cube" viewBox="0 0 24 24"><path d="m12 2 9 5v10l-9 5-9-5V7l9-5ZM3 7l9 5 9-5M12 12v10"/></symbol>
+    <symbol id="radio" viewBox="0 0 24 24"><circle cx="12" cy="12" r="2"/><path d="M7 7a7 7 0 0 0 0 10M17 7a7 7 0 0 1 0 10M4 4a11 11 0 0 0 0 16M20 4a11 11 0 0 1 0 16"/></symbol>
+    <symbol id="book" viewBox="0 0 24 24"><path d="M12 4C8 2 4 3 2 4v16c3-1.5 6-1.5 10 0 4-1.5 7-1.5 10 0V4c-2-1-6-2-10 0Zm0 0v16"/></symbol>
+    <symbol id="database" viewBox="0 0 24 24"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v7c0 4 18 4 18 0V5M3 12v7c0 4 18 4 18 0v-7"/></symbol>
+    <symbol id="shield" viewBox="0 0 24 24"><path d="m12 2 8 3v6c0 5-4 9-8 11-4-2-8-6-8-11V5l8-3Z"/></symbol>
+    <symbol id="grid" viewBox="0 0 24 24"><path d="M3 3h7v7H3zM14 3h7v7h-7zM3 14h7v7H3zM14 14h7v7h-7z"/></symbol>
+    <symbol id="play" viewBox="0 0 24 24"><path d="m6 2 16 10L6 22V2Z"/></symbol>
+    <symbol id="sliders" viewBox="0 0 24 24"><path d="M4 3v5m0 4v9m8-18v11m0 4v3m8-18v3m0 4v11M1 8h6m2 6h6m2-8h6"/></symbol>
+    <symbol id="copy" viewBox="0 0 24 24"><rect x="8" y="8" width="12" height="12" rx="2"/><path d="M16 8V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h3"/></symbol>
+    <symbol id="phone" viewBox="0 0 24 24"><path d="M6.62 10.79a15.05 15.05 0 0 0 6.59 6.59l2.2-2.2a1 1 0 0 1 1.02-.24c1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1C10.61 21 3 13.39 3 4c0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57a1 1 0 0 1-.25 1.02l-2.2 2.2Z"/></symbol>
+    <symbol id="check" viewBox="0 0 24 24"><path d="m5 12 4 4L19 6"/></symbol>
+    <symbol id="message" viewBox="0 0 24 24"><path d="M5 3h14a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H8l-5 4V5a2 2 0 0 1 2-2Z"/></symbol>
+    <symbol id="cloud" viewBox="0 0 24 24"><path d="M7 18a5 5 0 1 1 .66-9.96A7 7 0 0 1 21 11a4 4 0 0 1-1 7H7Z"/></symbol>
+    <symbol id="mail" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></symbol>
+    <symbol id="drive" viewBox="0 0 24 24"><path d="m4 10 3-6h10l3 6v10H4V10Zm0 2h16M8 16h.01M16 16h.01"/></symbol>
+    <symbol id="minus-circle" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M8 12h8"/></symbol>
+    <symbol id="plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
+    <symbol id="arrow-up" viewBox="0 0 24 24"><path d="M12 20V4m-7 7 7-7 7 7"/></symbol>
+    <symbol id="arrow-up-right" viewBox="0 0 24 24"><path d="M7 17 17 7M7 7h10v10"/></symbol>
+    <symbol id="server" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="7" rx="2"/><rect x="3" y="14" width="18" height="7" rx="2"/><path d="M7 6.5h.01M7 17.5h.01"/></symbol>
+    <symbol id="mobile" viewBox="0 0 24 24"><rect x="6" y="2" width="12" height="20" rx="2"/><path d="M12 18h.01"/></symbol>
+    <symbol id="close" viewBox="0 0 24 24"><path d="m6 6 12 12M6 18 18 6"/></symbol>
+    <symbol id="search" viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="7.5"/><path d="m16 16 5 5"/></symbol>
+    <symbol id="refresh" viewBox="0 0 24 24"><path d="M20 8a8 8 0 0 0-14-3L3 8m0-6v6h6M4 16a8 8 0 0 0 14 3l3-3m0 6v-6h-6"/></symbol>
+    <symbol id="branch" viewBox="0 0 24 24"><circle cx="6" cy="18" r="3"/><circle cx="18" cy="5" r="3"/><path d="M6 15V3m3 15h2a7 7 0 0 0 7-7V8"/></symbol>
+  </defs></svg>
+
+  <aside class="sidebar">
+    <div class="brand"><svg><use href="#layers"/></svg><div><div class="brand-name">Open Agent Space</div><div class="brand-subtitle">智能体开放平台</div></div></div>
+    <div class="nav-caption">工作台</div>
+    <nav class="navigation" aria-label="平台导航">
+      <a class="nav-item" href="#create-agent" data-nav-create><svg><use href="#zap"/></svg>快速创建智能体</a>
+      <a class="nav-item active" href="#agents" data-nav-agent aria-current="page"><svg><use href="#chip"/></svg>智能体</a>
+      <a class="nav-item" href="#"><svg><use href="#cube"/></svg>沙箱</a>
+      <a class="nav-item" href="#"><svg><use href="#radio"/></svg>通信技能</a>
+      <a class="nav-item" href="#"><svg><use href="#book"/></svg>知识库</a>
+      <a class="nav-item" href="#"><svg><use href="#database"/></svg>记忆库</a>
+      <a class="nav-item" href="#"><svg><use href="#shield"/></svg>智能体身份</a>
+    </nav>
+    <div class="space"><svg><use href="#grid"/></svg><div><div class="space-title">业务空间</div><div class="space-subtitle">管理员 · 默认空间</div></div></div>
+  </aside>
+
+  <header class="topbar">
+    <div class="breadcrumbs"><span>智能体平台</span><svg><use href="#chevron"/></svg><span data-section-breadcrumb>智能体</span><svg data-section-divider><use href="#chevron"/></svg><span data-agent-breadcrumb>行业研究助手</span><svg data-agent-divider><use href="#chevron"/></svg><span aria-current="page">编辑配置</span></div>
+    <div class="topbar-end"><a href="#">使用指南</a><div class="user-avatar">Y</div></div>
+  </header>
+
+  <main>
+    <a class="back" href="#agents"><svg><use href="#arrow-left"/></svg>返回智能体列表</a>
+    <section class="hero" aria-labelledby="agent-name">
+      <div class="agent-avatar"><svg><use href="#command"/></svg></div>
+      <div class="hero-content">
+        <div class="hero-top">
+          <div class="name-and-id">
+            <h1 id="agent-name">行业研究助手</h1>
+            <span class="agent-phone" aria-label="主人实名手机号 138****6621"><svg aria-hidden="true"><use href="#phone"/></svg><span>138****6621</span></span>
+            <span class="agent-id"><span>ID</span><code id="agent-id-value">agt_8f3c2a71</code><button class="copy-id" data-copy-target="agent-id-value" data-copy-label="ID" type="button" aria-label="复制 ID" title="复制 ID"><svg><use href="#copy"/></svg></button></span>
+            <span class="agent-id agent-aic"><span>AIC</span><code id="agent-aic-value">1.2.156.3088.1.CMIC.A.1.1J.1DJLTQW</code><button class="copy-id" data-copy-target="agent-aic-value" data-copy-label="AIC" type="button" aria-label="复制 AIC" title="复制 AIC"><svg><use href="#copy"/></svg></button></span>
+          </div>
+          <div class="actions"><a class="action primary" href="#online-debug"><svg><use href="#play"/></svg>在线调试</a><a class="action secondary" href="#configuration"><svg><use href="#sliders"/></svg>编辑配置</a></div>
+        </div>
+        <div class="metadata" aria-label="智能体基本信息与运行信息" tabindex="0">
+          <span class="meta-item"><span class="meta-label">Agent</span><span class="tag framework">OpenClaw</span></span>
+          <span class="meta-item"><span class="meta-label">模型</span><span class="meta-value">Qwen Plus</span></span>
+          <span class="meta-item"><span class="meta-label">环境</span><span class="meta-value">x86 · Linux</span></span>
+          <span class="meta-item"><span class="meta-value">未关联沙箱</span></span>
+          <span class="meta-item" data-library="knowledgeLibrary"><span class="meta-value">知识库</span></span>
+          <span class="meta-item" data-library="memoryLibrary"><span class="meta-value">记忆库</span></span>
+          <span class="meta-item" aria-label="状态：运行中"><span class="tag running">运行中</span></span>
+          <span class="meta-item"><span class="tag version">配置V3</span></span>
+        </div>
+      </div>
+    </section>
+
+    <form class="configuration" id="configuration" aria-label="编辑配置">
+      <section class="config-section" aria-labelledby="basic-heading">
+        <h2 id="basic-heading">基础信息</h2>
+        <div class="config-fields">
+          <label class="field"><span class="field-label">智能体名称<span class="required">*</span></span><input type="text" id="config-name" name="name" value="行业研究助手" maxlength="50" required aria-describedby="name-help"><span class="field-help" id="name-help">最多 50 个字，在当前空间内保持唯一。</span></label>
+          <label class="field"><span class="field-label">智能体描述（可选）</span><textarea name="description" id="config-description" rows="3">跟踪行业动态、整理公开资料，输出可追溯的分析报告。</textarea></label>
+        </div>
+      </section>
+
+      <section class="config-section" aria-labelledby="image-heading">
+        <div class="config-heading"><h2 id="image-heading">镜像选择<span class="required">*</span></h2><span class="config-heading-note">选择适合你的智能体框架</span></div>
+        <div class="image-options" role="radiogroup" aria-labelledby="image-heading">
+          <label class="image-option"><input type="radio" name="framework" value="OpenClaw" checked required><span class="radio-indicator"><svg><use href="#check"/></svg></span><span class="image-option-top"><span class="image-icon"><svg><use href="#zap"/></svg></span><span class="image-eyebrow">行动型助手</span></span><strong>OpenClaw</strong><p>调用技能与服务，完成多步骤任务和日常自动化。</p></label>
+          <label class="image-option"><input type="radio" name="framework" value="Hermes" required><span class="radio-indicator"><svg><use href="#check"/></svg></span><span class="image-option-top"><span class="image-icon hermes"><svg><use href="#sliders"/></svg></span><span class="image-eyebrow">个性化助手</span></span><strong>Hermes</strong><p>可定制角色与技能，通过记忆持续积累使用经验。</p></label>
+          <label class="image-option disabled" aria-disabled="true"><input type="radio" name="framework" value="DeepSeek Harness" disabled><span class="radio-indicator"></span><span class="image-option-top"><span class="image-icon"><svg><use href="#chip"/></svg></span></span><strong>DeepSeek Harness</strong><p>敬请期待</p></label>
+        </div>
+      </section>
+
+      <section class="config-section" aria-labelledby="model-heading">
+        <h2 id="model-heading">模型与角色</h2>
+        <div class="config-fields">
+          <label class="field"><span class="field-label">大模型<span class="required">*</span></span><select name="model" id="config-model" required aria-describedby="model-help"><option value="Qwen Plus">Qwen Plus</option><option value="DeepSeek V3">DeepSeek V3</option><option value="Qwen Max">Qwen Max</option></select><span class="field-help" id="model-help">使用MoMA平台提供的模型</span></label>
+          <label class="field"><span class="field-label">系统提示词（可选）</span><textarea class="prompt" name="systemPrompt" id="config-prompt" rows="5">你是一个可靠的通用助手。先理解用户目标，合理使用已启用的技能，交付清晰、可检查的结果。涉及外部操作时先确认必要信息。</textarea></label>
+        </div>
+      </section>
+
+      <section class="config-section" aria-labelledby="skills-heading">
+        <h2 id="skills-heading">技能</h2>
+        <p class="config-description">选择通信技能或市场技能，支持多选。</p>
+        <div class="skill-tabs" role="tablist" aria-label="技能来源"><button class="skill-tab" type="button" id="communication-tab" role="tab" aria-selected="true" aria-controls="communication-skills">通信技能</button><button class="skill-tab" type="button" id="market-tab" role="tab" aria-selected="false" aria-controls="market-skills" tabindex="-1">技能市场</button></div>
+        <div class="skills-grid" role="tabpanel" id="communication-skills" aria-labelledby="communication-tab">
+          <label class="skill-card"><input type="checkbox" name="skills" value="call" checked aria-label="通话 Skill"><span class="skill-icon"><svg><use href="#phone"/></svg></span><span class="skill-copy"><strong>通话 Skill</strong><p>调用代接、代打与速记能力，处理来电、外呼和通话后的事项。</p><span class="skill-source">通信技能</span></span></label>
+          <label class="skill-card"><input type="checkbox" name="skills" value="message" checked aria-label="消息 Skill"><span class="skill-icon"><svg><use href="#message"/></svg></span><span class="skill-copy"><strong>消息 Skill</strong><p>集中接收消息，辅助回复和定时发送，汇总重要信息与待办。</p><span class="skill-source">通信技能</span></span></label>
+          <label class="skill-card"><input type="checkbox" name="skills" value="cloud" checked aria-label="云盘 Skill"><span class="skill-icon"><svg><use href="#drive"/></svg></span><span class="skill-copy"><strong>云盘 Skill</strong><p>集中存放智能体生成的报告、图表与文件，并支持文件管理和快速查找。</p><span class="skill-source">通信技能</span></span></label>
+          <label class="skill-card"><input type="checkbox" name="skills" value="mail" checked aria-label="邮箱 Skill"><span class="skill-icon"><svg><use href="#mail"/></svg></span><span class="skill-copy"><strong>邮箱 Skill</strong><p>连接 139 邮箱，完成邮件阅读、撰写回复、摘要整理与待办提取。</p><span class="skill-source">通信技能</span></span></label>
+        </div>
+        <div class="skills-grid" role="tabpanel" id="market-skills" aria-labelledby="market-tab" hidden><label class="skill-card market-option"><input type="checkbox" name="skills" value="search" aria-label="网页检索"><span class="skill-copy"><strong>网页检索</strong></span></label><label class="skill-card market-option"><input type="checkbox" name="skills" value="document" aria-label="文档处理"><span class="skill-copy"><strong>文档处理</strong></span></label></div>
+      </section>
+
+      <section class="config-section" id="sandbox-configuration" aria-labelledby="sandbox-heading">
+        <div class="config-heading"><h2 id="sandbox-heading">沙箱</h2><button class="action secondary sandbox-create" type="button"><svg><use href="#plus"/></svg>新建沙箱</button></div>
+        <p class="config-description">可选。可选择 Linux、云手机 Android 或云电脑 Windows 沙箱；创建的沙箱也会出现在沙箱列表。</p>
+        <div class="config-fields"><label class="field"><span class="field-label">选择沙箱</span><select name="sandbox" id="config-sandbox"><option value="">暂不关联</option><option value="browser">浏览器沙箱 · x86 · Linux</option></select></label></div>
+        <p class="sandbox-note" id="config-sandbox-empty"><svg><use href="#minus-circle"/></svg>暂不关联，可在创建后编辑配置添加。</p>
+        <div class="library-details" id="config-sandbox-details" hidden><span class="library-icon"><svg><use href="#cube"/></svg></span><div class="library-copy"><strong>浏览器沙箱</strong><p>用于网页访问、页面交互与浏览器自动化。</p><p>x86 · Linux · API Key · Python / Browser</p></div></div>
+      </section>
+
+      <section class="config-section" aria-labelledby="knowledge-heading">
+        <div class="library-heading"><div><h2 id="knowledge-heading">知识库</h2><p class="config-description">开启后使用知识库中的全部内容，并自动安装云盘知识库 Skill。</p></div><label class="config-checkbox"><input type="checkbox" id="config-knowledge" name="knowledgeLibrary" checked>开启知识库</label></div>
+        <div class="library-details" id="knowledge-details"><span class="library-icon"><svg><use href="#cloud"/></svg></span><div class="library-copy"><strong>云盘知识库 Skill</strong><p>已启用，智能体可使用本页全部知识内容。</p></div><span class="library-status">已开启</span></div>
+      </section>
+
+      <section class="config-section" aria-labelledby="memory-heading">
+        <div class="library-heading"><div><h2 id="memory-heading">记忆库</h2><p class="config-description">开启后使用记忆库，保留用户偏好、长期信息与任务经验。</p></div><label class="config-checkbox"><input type="checkbox" id="config-memory" name="memoryLibrary" checked>开启记忆库</label></div>
+        <div class="library-details" id="memory-details"><span class="library-icon"><svg><use href="#database"/></svg></span><div class="library-copy"><strong>记忆库</strong><p>已启用，智能体可读写记忆内容。</p></div><span class="library-status">已开启</span></div>
+      </section>
+
+      <section class="config-section identity-note" aria-labelledby="identity-heading"><svg><use href="#shield"/></svg><div><h2 id="identity-heading">智能体身份</h2><p>身份由平台分配，在「智能体身份」模块管理。</p></div></section>
+      <footer class="configuration-footer"><span class="current-version" id="current-version" role="status" aria-live="polite">当前生效配置 v3</span><button class="apply-button" type="submit"><svg><use href="#check"/></svg>应用配置</button></footer>
+    </form>
+
+    <section class="chat-workspace" id="online-debug" aria-label="在线调试" hidden>
+      <aside class="chat-sidebar">
+        <button class="new-chat" id="new-chat" type="button"><svg><use href="#plus"/></svg>新建会话</button>
+        <div class="chat-list-heading">调试会话记录</div>
+        <nav class="chat-sessions" id="chat-sessions" aria-label="调试会话记录"></nav>
+      </aside>
+      <div class="chat-main">
+        <div class="chat-stage" id="chat-stage">
+          <div class="chat-welcome" id="chat-welcome"><div class="chat-welcome-avatar"><svg><use href="#command"/></svg></div><h2>你好，我是<span id="chat-agent-name">行业研究助手</span></h2><p>从一项具体任务开始，验证模型和运行效果。</p><div class="chat-suggestions"><button class="chat-suggestion" type="button" data-chat-prompt="帮我整理一份行业研究简报">帮我整理一份行业研究简报<svg><use href="#arrow-up-right"/></svg></button><button class="chat-suggestion" type="button" data-chat-prompt="介绍一下你能做什么">介绍一下你能做什么<svg><use href="#arrow-up-right"/></svg></button></div></div>
+          <div class="chat-messages" id="chat-messages" role="log" aria-label="会话消息" aria-live="polite" hidden></div>
+        </div>
+        <form class="chat-composer" id="chat-composer" aria-label="发送任务"><textarea id="chat-input" rows="2" placeholder="描述你希望智能体完成的任务..." aria-label="描述你希望智能体完成的任务"></textarea><div class="chat-composer-footer"><span class="chat-send-hint">Enter 发送</span><button class="chat-send" type="submit" aria-label="发送"><svg><use href="#arrow-up"/></svg></button></div></form>
+      </div>
+    </section>
+
+    <section id="agents" class="agents-home" aria-labelledby="agents-heading" hidden>
+      <div class="agents-page-heading"><div><h1 id="agents-heading">智能体</h1><p>创建、配置、调试和管理你的智能体。</p></div><a class="apply-button" href="#create-agent"><svg><use href="#plus"/></svg>创建智能体</a></div>
+      <div class="agent-table-card">
+        <div class="agent-table-toolbar"><label class="agent-search"><svg aria-hidden="true"><use href="#search"/></svg><input id="agent-search" type="search" placeholder="搜索智能体名称、ID 或 AIC" aria-label="搜索智能体名称、ID 或 AIC"></label><button id="agent-refresh" class="agent-refresh" type="button" aria-label="刷新智能体列表" title="刷新"><svg><use href="#refresh"/></svg></button></div>
+        <div class="agent-table-scroll"><table class="agent-table" aria-label="智能体列表"><colgroup><col style="width:32%"><col style="width:9.5%"><col style="width:11.5%"><col style="width:9.5%"><col style="width:8.5%"><col style="width:14%"><col style="width:15%"></colgroup><thead><tr><th scope="col">名称</th><th scope="col">模板</th><th scope="col">运行环境</th><th scope="col">沙箱</th><th scope="col">状态</th><th scope="col">更新时间</th><th scope="col">操作</th></tr></thead><tbody id="agent-rows"></tbody></table></div>
+        <footer class="agent-table-footer"><span id="agent-count">共 5 个智能体</span><nav class="agent-pagination" aria-label="智能体列表分页"><span class="agent-pagination-label">5 条 / 页</span><button id="agent-page-previous" class="agent-page-button" type="button" aria-label="上一页" disabled><svg style="transform:rotate(180deg)"><use href="#chevron"/></svg></button><span id="agent-page-number" class="agent-page-number" aria-current="page">1</span><span id="agent-page-total">/ 1</span><button id="agent-page-next" class="agent-page-button" type="button" aria-label="下一页" disabled><svg><use href="#chevron"/></svg></button></nav></footer>
+      </div><div id="agent-list-status" class="sr-only" role="status" aria-live="polite"></div>
+    </section>
+    <section id="create-agent" class="create-agent" aria-labelledby="create-heading" hidden>
+      <a class="back" href="#configuration" data-create-exit><svg><use href="#arrow-left"/></svg>返回创建门户</a>
+      <div class="create-page-heading"><div><h1 id="create-heading">创建智能体</h1><p>四步完成配置，创建后即可进入会话调试。</p></div><a class="action secondary cancel-create" href="#configuration" data-create-exit><svg><use href="#close"/></svg>取消创建</a></div>
+      <nav class="create-steps" aria-label="创建步骤">
+        <button type="button" class="create-step" data-step="1" aria-current="step"><span class="step-number">1</span><span>智能体配置</span></button>
+        <button type="button" class="create-step" data-step="2"><span class="step-number">2</span><span>关联沙箱</span></button>
+        <button type="button" class="create-step" data-step="3"><span class="step-number">3</span><span>知识与记忆</span></button>
+        <button type="button" class="create-step" data-step="4"><span class="step-number">4</span><span>确认创建</span></button>
+      </nav>
+      <div class="create-layout">
+        <form id="create-form" class="create-form" aria-label="创建智能体" novalidate>
+          <div class="create-panel" data-create-panel="1">
+            <section class="config-section"><h2>基础信息</h2><div class="config-fields">
+              <label class="field"><span class="field-label">智能体名称<span class="required">*</span></span><input id="create-name" type="text" name="name" maxlength="50" placeholder="例如：行业研究助手" required aria-describedby="create-name-error create-name-help"><span class="field-error" id="create-name-error" role="alert" hidden>请输入智能体名称</span><span class="field-help" id="create-name-help">最多 50 个字，在当前空间内保持唯一。</span></label>
+              <label class="field"><span class="field-label">智能体描述（可选）</span><textarea name="description" rows="3" placeholder="描述任务目标与适用场景"></textarea></label>
+            </div></section>
+            <section class="config-section" id="create-image-section"><div id="create-image-options"></div><div class="create-environment">
+              <div class="config-heading"><h2 id="create-environment-heading">运行环境<span class="required">*</span></h2><span class="config-heading-note">创建后不可修改</span></div>
+              <div class="image-options environment-options" role="radiogroup" aria-labelledby="create-environment-heading">
+                <label class="image-option"><input type="radio" name="environment" value="x86 · Linux" checked required><span class="radio-indicator"><svg><use href="#check"/></svg></span><span class="image-option-top"><span class="image-icon"><svg><use href="#server"/></svg></span><span class="image-eyebrow">通用计算</span></span><strong>x86 · Linux</strong><p>适合代码执行、文件处理和自动化任务。</p></label>
+                <label class="image-option"><input type="radio" name="environment" value="云手机 · Android" required><span class="radio-indicator"><svg><use href="#check"/></svg></span><span class="image-option-top"><span class="image-icon android"><svg><use href="#mobile"/></svg></span><span class="image-eyebrow">移动应用</span></span><strong>云手机 · Android</strong><p>在云端手机中操作应用，处理移动端任务。</p></label>
+              </div>
+            </div></section>
+            <div id="create-model-section"></div>
+            <div id="create-skills-section"></div>
+          </div>
+          <div class="create-panel" data-create-panel="2" hidden>
+            <section class="config-section"><div class="config-heading"><h2>沙箱</h2><button class="action secondary sandbox-create" type="button"><svg><use href="#plus"/></svg>新建沙箱</button></div><p class="config-description">可选。可选择 Linux、云手机 Android 或云电脑 Windows 沙箱；创建的沙箱也会出现在沙箱列表。</p>
+              <div class="config-fields"><label class="field"><span class="field-label">选择沙箱</span><select name="sandbox" id="create-sandbox"><option value="">暂不关联</option><option value="browser">浏览器沙箱 · x86 · Linux</option></select></label></div>
+              <p class="sandbox-note" id="create-sandbox-empty"><svg><use href="#minus-circle"/></svg>暂不关联，可在创建后编辑配置添加。</p>
+              <div class="create-sandbox-details" id="create-sandbox-details" hidden><span class="library-icon"><svg><use href="#cube"/></svg></span><div class="library-copy"><strong>浏览器沙箱</strong><p>用于网页访问、页面交互与浏览器自动化。</p><p class="sandbox-config-summary" tabindex="-1">x86 · Linux · API Key · Python / Browser</p></div><button class="action secondary" id="create-view-sandbox" type="button">查看配置</button></div>
+            </section>
+          </div>
+          <div class="create-panel" data-create-panel="3" hidden>
+            <div class="create-information"><svg><use href="#book"/></svg><div><p>连接业务知识，保留长期记忆</p><span>知识库与记忆库默认不开启，可按需勾选。</span></div></div>
+            <div id="create-libraries"></div>
+          </div>
+          <div class="create-panel" data-create-panel="4" hidden>
+            <section class="config-section"><div class="config-heading"><h2>确认创建信息</h2><span class="create-pending">待创建</span></div><p class="config-description">核对所选配置。创建后可以继续编辑和调试。</p>
+              <dl class="create-confirmation">
+                <div><dt>智能体名称</dt><dd data-confirm="name"></dd></div><div><dt>镜像 / 环境</dt><dd data-confirm="imageEnvironment"></dd></div>
+                <div class="confirmation-wide confirmation-aic"><dt><svg><use href="#shield"/></svg>智能体身份（AIC）</dt><dd>创建成功后自动分配</dd></div>
+                <div class="confirmation-wide"><dt>大模型</dt><dd data-confirm="model"></dd></div>
+                <div class="confirmation-wide"><dt>描述</dt><dd data-confirm="description"></dd></div>
+                <div class="confirmation-wide"><dt>系统提示词</dt><dd data-confirm="systemPrompt"></dd></div>
+                <div class="confirmation-wide"><dt>技能</dt><dd data-confirm="skills"></dd></div>
+                <div class="confirmation-wide"><dt>沙箱</dt><dd data-confirm="sandbox"></dd></div>
+                <div><dt>知识库</dt><dd data-confirm="knowledgeLibrary"></dd></div><div><dt>记忆库</dt><dd data-confirm="memoryLibrary"></dd></div>
+              </dl>
+            </section>
+            <div class="create-information create-confirm-note"><svg><use href="#shield"/></svg><p>智能体创建完成后自动分配专属 AIC，并提供会话调试入口。通信技能的外部账号授权可在创建后配置。</p></div>
+          </div>
+          <footer class="create-footer"><span id="create-step-caption">步骤 1 / 4</span><div><button class="action secondary" id="create-previous" type="button" hidden><svg><use href="#arrow-left"/></svg>上一步</button><button class="apply-button" id="create-next" type="button"><svg><use href="#arrow-right"/></svg>下一步</button><button class="apply-button" id="create-submit" type="submit" hidden><svg><use href="#plus"/></svg>创建智能体</button></div></footer>
+        </form>
+        <aside class="create-preview" aria-label="创建预览"><p class="preview-caption">创建预览</p><h2 id="create-preview-name">未命名智能体</h2><dl>
+          <div><dt>镜像</dt><dd data-preview="framework">OpenClaw</dd></div><div><dt>运行环境</dt><dd data-preview="environment">x86 · Linux</dd></div><div><dt>大模型</dt><dd data-preview="model">Qwen Plus</dd></div><div><dt>技能</dt><dd data-preview="skills">6 个</dd></div><div><dt>沙箱</dt><dd data-preview="sandbox">未关联</dd></div><div><dt>知识库</dt><dd data-preview="knowledgeLibrary">未开启</dd></div><div><dt>记忆库</dt><dd data-preview="memoryLibrary">未开启</dd></div>
+        </dl><div class="preview-identity"><svg><use href="#shield"/></svg><span>创建成功后自动分配智能体身份（AIC）</span></div></aside>
+      </div>
+    </section>
+  </main>
+  <dialog id="agent-delete-dialog" class="agent-delete-dialog" aria-labelledby="agent-delete-heading" aria-describedby="agent-delete-description"><h2 id="agent-delete-heading">删除智能体</h2><p id="agent-delete-description">确定删除“<strong id="agent-delete-name"></strong>”吗？</p><p class="agent-delete-note">删除后将移除该智能体的配置和调试会话记录。</p><div class="agent-delete-dialog-actions"><button type="button" class="action secondary" id="agent-delete-cancel" autofocus>取消</button><button type="button" class="action agent-delete-confirm" id="agent-delete-confirm">删除</button></div></dialog>
+  <script id="creation-selections" type="application/json">
+    {"memoryLibrary": true, "knowledgeLibrary": true}
+  </script>
+  <script>
+    if (new URLSearchParams(location.search).has('content-only')) document.body.classList.add('content-only');
+    const creationSelections = JSON.parse(document.getElementById('creation-selections').textContent);
+    const form = document.getElementById('configuration');
+    const originalAgentId = 'agt_8f3c2a71';
+    const agentsStorageKey = 'oas-agent-list';
+    const deletedAgentsStorageKey = 'oas-agent-deleted-ids';
+    const seedAgents = [
+      {id:'agt_6ibvut47',name:'数据研究111',framework:'OpenClaw',environment:'x86 · Linux',status:'运行中',updatedAt:'2026-10-23 13:59',description:'123344',skills:['search','document','call','message','cloud','mail'],sandbox:'browser',knowledgeLibrary:true,memoryLibrary:true},
+      {id:originalAgentId,name:'行业研究助手',framework:'OpenClaw',environment:'x86 · Linux',status:'运行中',updatedAt:'2026-10-19 17:42',ownerPhone:'138****6621',aic:'1.2.156.3088.1.CMIC.A.1.1J.1DJLTQW'},
+      {id:'agt_6b9e5d24',name:'客户服务助理',framework:'Hermes',environment:'x86 · Linux',status:'准备中',updatedAt:'2026-10-19 16:28'},
+      {id:'agt_2d7a4f80',name:'内容创作助手',framework:'OpenClaw',environment:'x86 · Linux',status:'准备中',updatedAt:'2026-10-19 15:56'},
+      {id:'agt_4e1c8b63',name:'数据分析助手',framework:'Hermes',environment:'x86 · Linux',status:'异常',updatedAt:'2026-10-19 14:35'}
+    ];
+    function sandboxRecord(value) {
+      return window.oasModules ? window.oasModules.sandbox(value) : value === 'browser' ? {name:'浏览器沙箱'} : null;
+    }
+    function readRoute() {
+      const [view, query] = location.hash.slice(1).split('?');
+      return {view:view || 'agents',agentId:new URLSearchParams(query || '').get('agent') || originalAgentId};
+    }
+    function agentLink(view, id = activeAgentId) {
+      return '#' + view + (id === originalAgentId ? '' : '?agent=' + encodeURIComponent(id));
+    }
+    function readAgents() {
+      let records = seedAgents.map(agent => ({...agent}));
+      try {
+        const stored = JSON.parse(localStorage.getItem(agentsStorageKey));
+        if (Array.isArray(stored) && stored.every(agent => typeof agent.id === 'string' && typeof agent.name === 'string' && ['OpenClaw','Hermes'].includes(agent.framework) && ['运行中','准备中','异常'].includes(agent.status))) {
+          records = [...stored, ...seedAgents.filter(seed => !stored.some(agent => agent.id === seed.id)).map(agent => ({...agent}))];
+        }
+      } catch {}
+      let deletedIds = [];
+      try {
+        const storedDeleted = JSON.parse(localStorage.getItem(deletedAgentsStorageKey));
+        if (Array.isArray(storedDeleted)) deletedIds = storedDeleted;
+      } catch {}
+      records = records.filter(agent => !deletedIds.includes(agent.id));
+      // Stable demonstration identities; existing AIC values are retained.
+      let completed = false;
+      records.forEach(agent => {
+        if (typeof agent.aic !== 'string' || !agent.aic.trim()) {
+          agent.aic = '1.2.156.3088.1.CMIC.A.1.1J.' + agent.id.slice(-7).toUpperCase();
+          completed = true;
+        }
+      });
+      if (completed) { try { localStorage.setItem(agentsStorageKey,JSON.stringify(records)); } catch {} }
+      return records;
+    }
+    function persistAgents() {
+      try { localStorage.setItem(agentsStorageKey, JSON.stringify(agents)); } catch {}
+    }
+    let agents = readAgents();
+    let activeAgentId = agents.some(agent => agent.id === readRoute().agentId) ? readRoute().agentId : agents[0]?.id || originalAgentId;
+    let storageKey = 'oas-agent-' + activeAgentId + '-configuration';
+    let debugState = null;
+    const defaults = {
+      name: '行业研究助手',
+      description: '跟踪行业动态、整理公开资料，输出可追溯的分析报告。',
+      framework: 'OpenClaw', model: 'Qwen Plus',
+      systemPrompt: '你是一个可靠的通用助手。先理解用户目标，合理使用已启用的技能，交付清晰、可检查的结果。涉及外部操作时先确认必要信息。',
+      skills: ['call', 'message', 'cloud', 'mail'], sandbox: '',
+      knowledgeLibrary: creationSelections.knowledgeLibrary === true,
+      memoryLibrary: creationSelections.memoryLibrary === true,
+      version: 3
+    };
+    function loadAgentConfiguration(agent) {
+      const base = agent.id === originalAgentId ? {...defaults} : {...defaults,name:agent.name,description:agent.description || '',framework:agent.framework,skills:agent.skills || [...defaults.skills],sandbox:agent.sandbox || '',knowledgeLibrary:agent.knowledgeLibrary === true,memoryLibrary:agent.memoryLibrary === true,version:agent.version || 1};
+      base.environment = agent.environment || 'x86 · Linux';
+      const key = 'oas-agent-' + agent.id + '-configuration';
+      let configuration = {...base};
+      try {
+        const saved = JSON.parse(localStorage.getItem(key));
+        if (saved && typeof saved.name === 'string' && ['OpenClaw','Hermes'].includes(saved.framework) && Number.isInteger(saved.version)) {
+          configuration = {...base, ...saved};
+          const legacyDemoDefaults = {...defaults,skills:['call','cloud']};
+          if (agent.id === originalAgentId && Object.keys(legacyDemoDefaults).every(field => JSON.stringify(saved[field]) === JSON.stringify(legacyDemoDefaults[field]))) {
+            configuration.skills = [...defaults.skills];
+            localStorage.setItem(key,JSON.stringify(configuration));
+          }
+        }
+      } catch {}
+      return configuration;
+    }
+    let appliedConfiguration = agents.length ? loadAgentConfiguration(agents.find(agent => agent.id === activeAgentId)) : {...defaults,environment:'x86 · Linux'};
+
+    function renderAppliedConfiguration(configuration) {
+      const agent = agents.find(item => item.id === activeAgentId);
+      if (!agent) return;
+      document.getElementById('agent-name').textContent = configuration.name;
+      document.getElementById('agent-name').title = configuration.name;
+      document.getElementById('agent-id-value').textContent = agent.id;
+      document.getElementById('agent-aic-value').textContent = agent.aic || '';
+      document.querySelector('.agent-aic').hidden = !agent.aic;
+      document.querySelector('.agent-phone').hidden = !agent.ownerPhone;
+      document.querySelector('.agent-phone>span').textContent = agent.ownerPhone || '';
+      document.querySelector('.agent-phone').setAttribute('aria-label','主人实名手机号 ' + (agent.ownerPhone || ''));
+      document.querySelector('[data-agent-breadcrumb]').textContent = configuration.name;
+      const view = readRoute().view;
+      const detailView = ['configuration','online-debug'].includes(view);
+      const pageLabel = view === 'create-agent' ? '创建智能体' : view === 'online-debug' ? '在线调试' : view === 'configuration' ? '编辑配置' : '智能体';
+      document.querySelector('.breadcrumbs [aria-current="page"]').textContent = pageLabel;
+      document.title = pageLabel + (detailView ? ' · ' + configuration.name : '') + ' · Open Agent Space';
+      document.querySelector('.metadata .tag.framework').textContent = configuration.framework;
+      document.querySelector('.metadata .meta-item:nth-child(2) .meta-value').textContent = configuration.model;
+      document.querySelector('.metadata .meta-item:nth-child(3) .meta-value').textContent = configuration.environment;
+      document.querySelector('.metadata .meta-item:nth-child(4) .meta-value').textContent = sandboxRecord(configuration.sandbox)?.name || '未关联沙箱';
+      document.querySelector('.metadata .tag.version').textContent = '配置V' + configuration.version;
+      const status = document.querySelector('.metadata .tag.running');
+      status.textContent = agent.status;
+      status.classList.toggle('preparing',agent.status === '准备中');
+      status.classList.toggle('error',agent.status === '异常');
+      status.parentElement.setAttribute('aria-label','状态：' + agent.status);
+      document.querySelector('.actions .primary').href = agentLink('online-debug');
+      document.querySelector('.actions .primary').setAttribute('aria-disabled',String(agent.status !== '运行中'));
+      document.querySelector('.actions .secondary').href = agentLink('configuration');
+      document.getElementById('chat-input').disabled = agent.status !== '运行中';
+      document.querySelector('.chat-send').disabled = agent.status !== '运行中';
+      document.querySelectorAll('.metadata [data-library]').forEach(item => {
+        item.hidden = configuration[item.dataset.library] !== true;
+      });
+      document.getElementById('current-version').textContent = '当前生效配置 v' + configuration.version;
+      if (debugState) renderDebugConversation();
+    }
+
+    function syncLibraryDetails() {
+      document.getElementById('knowledge-details').hidden = !document.getElementById('config-knowledge').checked;
+      document.getElementById('memory-details').hidden = !document.getElementById('config-memory').checked;
+    }
+    function syncConfigurationSandbox() {
+      const value = document.getElementById('config-sandbox').value;
+      const selected = Boolean(sandboxRecord(value));
+      window.oasModules?.fillSandboxDetails('config-sandbox-details',value);
+      document.getElementById('config-sandbox-empty').hidden = selected;
+      document.getElementById('config-sandbox-details').hidden = !selected;
+    }
+
+    function fillConfiguration(configuration) {
+      for (const key of ['name', 'description', 'model', 'systemPrompt', 'sandbox']) form.elements.namedItem(key).value = configuration[key];
+      const browserOption = document.querySelector('#config-sandbox option[value="browser"]');
+      if (browserOption) browserOption.disabled = configuration.environment !== 'x86 · Linux';
+      window.oasModules?.refreshDownloaded?.();
+      form.querySelectorAll('[name="framework"]').forEach(input => { input.checked = input.value === configuration.framework; });
+      form.querySelectorAll('[name="skills"]').forEach(input => { input.checked = configuration.skills.includes(input.value); });
+      document.getElementById('config-knowledge').checked = configuration.knowledgeLibrary;
+      document.getElementById('config-memory').checked = configuration.memoryLibrary;
+      syncLibraryDetails();
+      syncConfigurationSandbox();
+    }
+
+    renderAppliedConfiguration(appliedConfiguration);
+    fillConfiguration(appliedConfiguration);
+    document.getElementById('config-knowledge').addEventListener('change', syncLibraryDetails);
+    document.getElementById('config-memory').addEventListener('change', syncLibraryDetails);
+    document.getElementById('config-sandbox').addEventListener('change', syncConfigurationSandbox);
+    document.getElementById('config-name').addEventListener('input', event => event.target.setCustomValidity(''));
+
+    const skillTabs = [...document.querySelectorAll('.skill-tab')];
+    function selectSkillTab(tab) {
+      skillTabs.forEach(item => {
+        const selected = item === tab;
+        item.setAttribute('aria-selected', String(selected));
+        item.tabIndex = selected ? 0 : -1;
+        document.getElementById(item.getAttribute('aria-controls')).hidden = !selected;
+      });
+    }
+    skillTabs.forEach((tab, index) => {
+      tab.addEventListener('click', () => selectSkillTab(tab));
+      tab.addEventListener('keydown', event => {
+        if (!['ArrowLeft', 'ArrowRight', 'Home', 'End'].includes(event.key)) return;
+        event.preventDefault();
+        const nextIndex = event.key === 'Home' ? 0 : event.key === 'End' ? skillTabs.length - 1 : (index + (event.key === 'ArrowRight' ? 1 : -1) + skillTabs.length) % skillTabs.length;
+        selectSkillTab(skillTabs[nextIndex]);
+        skillTabs[nextIndex].focus();
+      });
+    });
+
+    form.addEventListener('submit', event => {
+      event.preventDefault();
+      const nameInput = document.getElementById('config-name');
+      const duplicate = agents.some(agent => agent.id !== activeAgentId && loadAgentConfiguration(agent).name.toLowerCase() === nameInput.value.trim().toLowerCase());
+      nameInput.setCustomValidity(!nameInput.value.trim() ? '请输入智能体名称。' : duplicate ? '当前空间已存在同名智能体。' : '');
+      if (!form.reportValidity()) return;
+      const values = new FormData(form);
+      const nextConfiguration = {
+        name: values.get('name').trim(), description: values.get('description'),
+        framework: values.get('framework'), model: values.get('model'),
+        systemPrompt: values.get('systemPrompt'), skills: values.getAll('skills'),
+        sandbox: values.get('sandbox'),
+        knowledgeLibrary: document.getElementById('config-knowledge').checked,
+        memoryLibrary: document.getElementById('config-memory').checked
+      };
+      const changed = Object.keys(nextConfiguration).some(key => key === 'skills' ? JSON.stringify([...nextConfiguration.skills].sort()) !== JSON.stringify([...appliedConfiguration.skills].sort()) : JSON.stringify(nextConfiguration[key]) !== JSON.stringify(appliedConfiguration[key]));
+      appliedConfiguration = {...appliedConfiguration,...nextConfiguration, version: appliedConfiguration.version + (changed ? 1 : 0)};
+      try { localStorage.setItem(storageKey, JSON.stringify(appliedConfiguration)); } catch {}
+      const agent = agents.find(item => item.id === activeAgentId);
+      agent.name = appliedConfiguration.name;
+      agent.framework = appliedConfiguration.framework;
+      if (changed) agent.updatedAt = currentAgentDateTime();
+      persistAgents();
+      renderAppliedConfiguration(appliedConfiguration);
+    });
+    document.addEventListener('click', async event => {
+        if (event.target.closest('a[aria-disabled="true"]')) { event.preventDefault(); return; }
+        const copyButton = event.target.closest('[data-copy-target],[data-copy-value]');
+        if (!copyButton) return;
+        const value = copyButton.dataset.copyValue || document.getElementById(copyButton.dataset.copyTarget).textContent;
+        const label = copyButton.dataset.copyLabel;
+        try {
+          await navigator.clipboard.writeText(value);
+        } catch {
+          const input = document.createElement('textarea');
+          input.value = value;
+          input.style.cssText = 'position:fixed;top:-100px;opacity:0';
+          document.body.append(input);
+          input.select();
+          const copied = document.execCommand('copy');
+          input.remove();
+          if (!copied) return;
+        }
+        copyButton.dataset.copied = 'true';
+        copyButton.setAttribute('aria-label', `已复制 ${label}`);
+        copyButton.setAttribute('title', `已复制 ${label}`);
+        copyButton.querySelector('use').setAttribute('href', '#check');
+        window.setTimeout(() => {
+          copyButton.dataset.copied = 'false';
+          copyButton.setAttribute('aria-label', `复制 ${label}`);
+          copyButton.setAttribute('title', `复制 ${label}`);
+          copyButton.querySelector('use').setAttribute('href', '#copy');
+        }, 1800);
+    });
+
+    let debugStorageKey = 'oas-agent-' + activeAgentId + '-debug-sessions';
+    const chatInput = document.getElementById('chat-input');
+    const chatSessionList = document.getElementById('chat-sessions');
+    const chatMessages = document.getElementById('chat-messages');
+    function loadDebugState() {
+      const initialSession = {id:'debug-session-initial',title:'新会话',createdLabel:activeAgentId === originalAgentId ? '10-23 11:49' : currentConversationTime(),version:appliedConfiguration.version,model:appliedConfiguration.model,messages:[]};
+      debugState = {activeId:initialSession.id,sessions:[initialSession]};
+      try {
+        const saved = JSON.parse(localStorage.getItem(debugStorageKey));
+        if (saved && Array.isArray(saved.sessions) && saved.sessions.length && saved.sessions.every(session => typeof session.id === 'string' && typeof session.title === 'string' && typeof session.createdLabel === 'string' && Number.isInteger(session.version) && typeof session.model === 'string' && Array.isArray(session.messages) && session.messages.every(message => typeof message === 'string'))) debugState = saved;
+      } catch {}
+    }
+    loadDebugState();
+
+    function activeDebugSession() {
+      return debugState.sessions.find(session => session.id === debugState.activeId) || debugState.sessions[0];
+    }
+
+    function persistDebugState() {
+      try { localStorage.setItem(debugStorageKey, JSON.stringify(debugState)); } catch {}
+    }
+
+    function renderDebugConversation() {
+      const active = activeDebugSession();
+      debugState.activeId = active.id;
+      chatSessionList.replaceChildren();
+      debugState.sessions.forEach(session => {
+        const button = document.createElement('button');
+        button.type = 'button';
+        button.className = 'chat-session';
+        button.dataset.sessionId = session.id;
+        button.setAttribute('aria-current', String(session.id === active.id));
+        const title = document.createElement('span');
+        title.className = 'chat-session-title';
+        title.textContent = session.title;
+        const time = document.createElement('span');
+        time.className = 'chat-session-time';
+        time.textContent = session.createdLabel + ' · v' + session.version;
+        button.append(title, time);
+        button.addEventListener('click', () => {
+          debugState.activeId = session.id;
+          chatInput.value = '';
+          renderDebugConversation();
+          persistDebugState();
+        });
+        chatSessionList.append(button);
+      });
+      document.getElementById('chat-agent-name').textContent = appliedConfiguration.name;
+      document.getElementById('chat-welcome').hidden = active.messages.length > 0;
+      chatMessages.hidden = active.messages.length === 0;
+      chatMessages.replaceChildren();
+      active.messages.forEach(message => {
+        const bubble = document.createElement('div');
+        bubble.className = 'chat-message';
+        bubble.textContent = message;
+        chatMessages.append(bubble);
+      });
+      const stage = document.getElementById('chat-stage');
+      stage.scrollTop = stage.scrollHeight;
+    }
+
+    function currentConversationTime() {
+      const parts = new Intl.DateTimeFormat('zh-CN', {timeZone:'Asia/Shanghai',month:'2-digit',day:'2-digit',hour:'2-digit',minute:'2-digit',hour12:false}).formatToParts(new Date());
+      const value = type => parts.find(part => part.type === type).value;
+      return value('month') + '-' + value('day') + ' ' + value('hour') + ':' + value('minute');
+    }
+
+    document.getElementById('new-chat').addEventListener('click', () => {
+      const session = {id:crypto.randomUUID(),title:'新会话',createdLabel:currentConversationTime(),version:appliedConfiguration.version,model:appliedConfiguration.model,messages:[]};
+      debugState.sessions.unshift(session);
+      debugState.activeId = session.id;
+      chatInput.value = '';
+      renderDebugConversation();
+      persistDebugState();
+      chatInput.focus();
+    });
+
+    document.querySelectorAll('[data-chat-prompt]').forEach(button => {
+      button.addEventListener('click', () => {
+        chatInput.value = button.dataset.chatPrompt;
+        chatInput.focus();
+      });
+    });
+
+    function sendDebugMessage() {
+      if (agents.find(agent => agent.id === activeAgentId).status !== '运行中') return;
+      const text = chatInput.value.trim();
+      if (!text) return;
+      activeDebugSession().messages.push(text);
+      chatInput.value = '';
+      renderDebugConversation();
+      persistDebugState();
+      chatInput.focus();
+    }
+
+    document.getElementById('chat-composer').addEventListener('submit', event => {
+      event.preventDefault();
+      sendDebugMessage();
+    });
+    chatInput.addEventListener('keydown', event => {
+      if (event.key === 'Enter' && !event.shiftKey && !event.isComposing) {
+        event.preventDefault();
+        sendDebugMessage();
+      }
+    });
+
+    let agentListPage = 1;
+    const agentPageSize = 5;
+    function currentAgentDateTime() {
+      const parts = new Intl.DateTimeFormat('zh-CN',{timeZone:'Asia/Shanghai',year:'numeric',month:'2-digit',day:'2-digit',hour:'2-digit',minute:'2-digit',hour12:false}).formatToParts(new Date());
+      const value = type => parts.find(part => part.type === type).value;
+      return value('year') + '-' + value('month') + '-' + value('day') + ' ' + value('hour') + ':' + value('minute');
+    }
+    function createIcon(name) {
+      const icon = document.createElementNS('http://www.w3.org/2000/svg','svg');
+      icon.setAttribute('viewBox','0 0 24 24');
+      icon.setAttribute('aria-hidden','true');
+      const use = document.createElementNS('http://www.w3.org/2000/svg','use');
+      use.setAttribute('href','#' + name);
+      icon.append(use);
+      return icon;
+    }
+    function renderAgentList() {
+      const query = document.getElementById('agent-search').value.trim().toLowerCase();
+      const records = agents.map(agent => ({agent,configuration:loadAgentConfiguration(agent)})).filter(({agent,configuration}) => !query || configuration.name.toLowerCase().includes(query) || agent.id.toLowerCase().includes(query) || String(agent.aic || '').toLowerCase().includes(query));
+      const totalPages = Math.max(1,Math.ceil(records.length / agentPageSize));
+      agentListPage = Math.min(totalPages,Math.max(1,agentListPage));
+      const rows = document.getElementById('agent-rows');
+      rows.replaceChildren();
+      records.slice((agentListPage - 1) * agentPageSize,agentListPage * agentPageSize).forEach(({agent,configuration}) => {
+        const row = document.createElement('tr');
+        row.dataset.agentId = agent.id;
+        const nameCell = document.createElement('td');
+        const cell = document.createElement('div');
+        cell.className = 'agent-cell';
+        const avatar = document.createElement('span');
+        avatar.className = 'agent-list-avatar' + (configuration.framework === 'Hermes' ? ' hermes' : '');
+        avatar.append(createIcon(configuration.framework === 'Hermes' ? 'branch' : 'command'));
+        const copy = document.createElement('div');
+        copy.className = 'agent-cell-copy';
+        const name = document.createElement('a');
+        name.className = 'agent-name-link';
+        name.href = agentLink('configuration',agent.id);
+        name.textContent = configuration.name;
+        name.title = configuration.name;
+        const id = document.createElement('div');
+        id.className = 'agent-list-id';
+        const code = document.createElement('code');
+        code.textContent = agent.id;
+        const idLabel = document.createElement('span');
+        idLabel.className = 'identifier-label';
+        idLabel.textContent = 'ID';
+        const copyButton = document.createElement('button');
+        copyButton.type = 'button';
+        copyButton.className = 'copy-id';
+        copyButton.dataset.copyValue = agent.id;
+        copyButton.dataset.copyLabel = 'ID';
+        copyButton.setAttribute('aria-label','复制 ' + configuration.name + ' 的 ID');
+        copyButton.title = '复制 ID';
+        copyButton.append(createIcon('copy'));
+        id.append(idLabel,code,copyButton);
+        const aic = document.createElement('div');
+        aic.className = 'agent-list-id agent-list-aic';
+        const aicLabel = document.createElement('span');
+        aicLabel.className = 'identifier-label';
+        aicLabel.textContent = 'AIC';
+        const aicCode = document.createElement('code');
+        aicCode.textContent = agent.aic || '—';
+        aicCode.title = agent.aic || '';
+        aic.append(aicLabel,aicCode);
+        if (agent.aic) {
+          const aicCopy = document.createElement('button');
+          aicCopy.type = 'button';
+          aicCopy.className = 'copy-id';
+          aicCopy.dataset.copyValue = agent.aic;
+          aicCopy.dataset.copyLabel = 'AIC';
+          aicCopy.setAttribute('aria-label','复制 ' + configuration.name + ' 的 AIC');
+          aicCopy.title = '复制 AIC';
+          aicCopy.append(createIcon('copy'));
+          aic.append(aicCopy);
+        }
+        copy.append(name,id,aic);
+        cell.append(avatar,copy);
+        nameCell.append(cell);
+        const frameworkCell = document.createElement('td');
+        const framework = document.createElement('span');
+        framework.className = 'list-framework';
+        framework.textContent = configuration.framework;
+        frameworkCell.append(framework);
+        const environment = document.createElement('td');
+        environment.textContent = configuration.environment;
+        const sandbox = document.createElement('td');
+        sandbox.className = 'agent-sandbox' + (configuration.sandbox ? '' : ' unlinked');
+        sandbox.textContent = configuration.sandbox ? '已关联' : '未关联';
+        sandbox.title = sandboxRecord(configuration.sandbox)?.name || '';
+        const statusCell = document.createElement('td');
+        const status = document.createElement('span');
+        status.className = 'agent-status' + (agent.status === '准备中' ? ' preparing' : agent.status === '异常' ? ' error' : '');
+        status.textContent = agent.status;
+        statusCell.append(status);
+        const updated = document.createElement('td');
+        updated.className = 'agent-updated';
+        updated.textContent = agent.updatedAt || '';
+        const actionsCell = document.createElement('td');
+        const actions = document.createElement('div');
+        actions.className = 'agent-row-actions';
+        const chat = document.createElement(agent.status === '运行中' ? 'a' : 'span');
+        chat.textContent = '去对话';
+        chat.dataset.action = 'chat';
+        if (agent.status === '运行中') chat.href = agentLink('online-debug',agent.id);
+        else chat.setAttribute('aria-disabled','true');
+        const configure = document.createElement('a');
+        configure.textContent = '配置';
+        configure.dataset.action = 'configuration';
+        configure.href = agentLink('configuration',agent.id);
+        const remove = document.createElement('button');
+        remove.type = 'button';
+        remove.className = 'agent-delete';
+        remove.textContent = '删除';
+        remove.dataset.action = 'delete';
+        remove.setAttribute('aria-label','删除 ' + configuration.name);
+        remove.addEventListener('click', () => showAgentDeleteDialog(agent.id));
+        actions.append(chat,configure,remove);
+        actionsCell.append(actions);
+        row.append(nameCell,frameworkCell,environment,sandbox,statusCell,updated,actionsCell);
+        rows.append(row);
+      });
+      if (!records.length) {
+        const row = document.createElement('tr');
+        const cell = document.createElement('td');
+        cell.colSpan = 7;
+        cell.className = 'agent-empty';
+        cell.textContent = agents.length ? '未找到匹配的智能体' : '暂无智能体，点击“创建智能体”开始';
+        row.append(cell);
+        rows.append(row);
+      }
+      document.getElementById('agent-count').textContent = '共 ' + records.length + ' 个智能体';
+      document.getElementById('agent-page-number').textContent = agentListPage;
+      document.getElementById('agent-page-total').textContent = '/ ' + totalPages;
+      document.getElementById('agent-page-previous').disabled = agentListPage === 1;
+      document.getElementById('agent-page-next').disabled = agentListPage === totalPages;
+    }
+    document.getElementById('agent-search').addEventListener('input', () => { agentListPage = 1; renderAgentList(); });
+    document.getElementById('agent-refresh').addEventListener('click', () => {
+      agents = readAgents();
+      renderAgentList();
+      document.getElementById('agent-list-status').textContent = '列表已刷新';
+    });
+    document.getElementById('agent-page-previous').addEventListener('click', () => { agentListPage--; renderAgentList(); });
+    document.getElementById('agent-page-next').addEventListener('click', () => { agentListPage++; renderAgentList(); });
+    const agentDeleteDialog = document.getElementById('agent-delete-dialog');
+    let pendingAgentDeleteId = null;
+    function showAgentDeleteDialog(id) {
+      const agent = agents.find(item => item.id === id);
+      if (!agent) return;
+      pendingAgentDeleteId = id;
+      document.getElementById('agent-delete-name').textContent = loadAgentConfiguration(agent).name;
+      agentDeleteDialog.showModal();
+      document.getElementById('agent-delete-cancel').focus();
+    }
+    agentDeleteDialog.addEventListener('close', () => { pendingAgentDeleteId = null; });
+    document.getElementById('agent-delete-cancel').addEventListener('click', () => agentDeleteDialog.close());
+    document.getElementById('agent-delete-confirm').addEventListener('click', () => {
+      const agent = agents.find(item => item.id === pendingAgentDeleteId);
+      if (!agent) { agentDeleteDialog.close(); return; }
+      const name = loadAgentConfiguration(agent).name;
+      let deletedIds = [];
+      try {
+        const stored = JSON.parse(localStorage.getItem(deletedAgentsStorageKey));
+        if (Array.isArray(stored)) deletedIds = stored;
+      } catch {}
+      deletedIds = [...new Set([...deletedIds,agent.id])];
+      try {
+        localStorage.setItem(deletedAgentsStorageKey,JSON.stringify(deletedIds));
+        localStorage.removeItem('oas-agent-' + agent.id + '-configuration');
+        localStorage.removeItem('oas-agent-' + agent.id + '-debug-sessions');
+      } catch {}
+      agents = agents.filter(item => item.id !== agent.id);
+      persistAgents();
+      agentDeleteDialog.close();
+      if (agent.id === activeAgentId && agents.length) selectAgent(agents[0].id);
+      renderAgentList();
+      document.getElementById('agent-list-status').textContent = '已删除“' + name + '”';
+      document.getElementById('agent-refresh').focus({preventScroll:true});
+    });
+    function selectAgent(id) {
+      activeAgentId = agents.some(agent => agent.id === id) ? id : originalAgentId;
+      storageKey = 'oas-agent-' + activeAgentId + '-configuration';
+      debugStorageKey = 'oas-agent-' + activeAgentId + '-debug-sessions';
+      appliedConfiguration = loadAgentConfiguration(agents.find(agent => agent.id === activeAgentId));
+      loadDebugState();
+      chatInput.value = '';
+      fillConfiguration(appliedConfiguration);
+      document.getElementById('config-name').setCustomValidity('');
+      renderAppliedConfiguration(appliedConfiguration);
+    }
+
+    const createForm = document.getElementById('create-form');
+    let createStep = 1;
+    let lastAgentView = ['online-debug','configuration'].includes(readRoute().view) ? agentLink(readRoute().view) : '#agents';
+    const createSkillNames = {search:'网页检索',document:'文档处理',call:'通话 Skill',message:'消息 Skill',cloud:'云盘 Skill',mail:'邮箱 Skill'};
+
+    function cloneConfigurationSection(headingId, destinationId, contentsOnly = false) {
+      const section = document.getElementById(headingId).closest('section').cloneNode(true);
+      const idMap = new Map();
+      [section, ...section.querySelectorAll('[id]')].forEach(element => {
+        if (!element.id) return;
+        const oldId = element.id;
+        element.id = 'create-' + oldId;
+        idMap.set(oldId, element.id);
+      });
+      [section, ...section.querySelectorAll('*')].forEach(element => {
+        for (const attribute of ['for','aria-labelledby','aria-describedby','aria-controls']) {
+          if (element.hasAttribute(attribute)) element.setAttribute(attribute, element.getAttribute(attribute).split(' ').map(id => idMap.get(id) || id).join(' '));
+        }
+      });
+      const destination = document.getElementById(destinationId);
+      if (contentsOnly) destination.append(...section.childNodes);
+      else destination.append(section);
+      return section;
+    }
+
+    cloneConfigurationSection('image-heading', 'create-image-options', true);
+    cloneConfigurationSection('model-heading', 'create-model-section');
+    document.querySelectorAll('#create-config-model option').forEach(option => {
+      if (option.value.toLowerCase() === 'moma' || option.textContent.trim().toLowerCase() === 'moma') option.remove();
+    });
+    cloneConfigurationSection('skills-heading', 'create-skills-section');
+    cloneConfigurationSection('knowledge-heading', 'create-libraries');
+    cloneConfigurationSection('memory-heading', 'create-libraries');
+    createForm.querySelectorAll('[name="framework"]').forEach(input => { input.checked = input.defaultChecked = input.value === 'OpenClaw'; });
+    createForm.elements.namedItem('model').value = 'Qwen Plus';
+    createForm.elements.namedItem('systemPrompt').value = defaults.systemPrompt;
+    createForm.querySelectorAll('[name="skills"]').forEach(input => { input.checked = input.defaultChecked = true; });
+    createForm.querySelectorAll('[name="knowledgeLibrary"],[name="memoryLibrary"]').forEach(input => { input.checked = input.defaultChecked = false; });
+    const marketPanel = document.getElementById('create-market-skills');
+    marketPanel.replaceChildren();
+    marketPanel.className = 'skills-grid';
+    for (const key of ['search', 'document']) {
+      const label = document.createElement('label');
+      label.className = 'skill-card market-option';
+      const checkbox = document.createElement('input');
+      checkbox.type = 'checkbox';
+      checkbox.name = 'skills';
+      checkbox.value = key;
+      checkbox.checked = checkbox.defaultChecked = true;
+      checkbox.setAttribute('aria-label', createSkillNames[key]);
+      const copy = document.createElement('span');
+      copy.className = 'skill-copy';
+      const title = document.createElement('strong');
+      title.textContent = createSkillNames[key];
+      copy.append(title);
+      label.append(checkbox, copy);
+      marketPanel.append(label);
+    }
+    const createTabs = [...createForm.querySelectorAll('.skill-tab')];
+    createTabs.forEach((tab, index) => {
+      tab.addEventListener('click', () => selectCreateSkillTab(tab));
+      tab.addEventListener('keydown', event => {
+        if (!['ArrowLeft','ArrowRight','Home','End'].includes(event.key)) return;
+        event.preventDefault();
+        const next = event.key === 'Home' ? 0 : event.key === 'End' ? createTabs.length - 1 : (index + (event.key === 'ArrowRight' ? 1 : -1) + createTabs.length) % createTabs.length;
+        selectCreateSkillTab(createTabs[next]);
+        createTabs[next].focus();
+      });
+    });
+    function selectCreateSkillTab(tab) {
+      createTabs.forEach(item => {
+        const active = item === tab;
+        item.setAttribute('aria-selected', String(active));
+        item.tabIndex = active ? 0 : -1;
+        document.getElementById(item.getAttribute('aria-controls')).hidden = !active;
+      });
+    }
+    selectCreateSkillTab(createTabs[0]);
+
+    function readCreationValues() {
+      const values = new FormData(createForm);
+      return {name:values.get('name').trim(),description:values.get('description'),framework:values.get('framework'),environment:values.get('environment'),model:values.get('model'),systemPrompt:values.get('systemPrompt'),skills:values.getAll('skills'),sandbox:values.get('sandbox'),knowledgeLibrary:values.has('knowledgeLibrary'),memoryLibrary:values.has('memoryLibrary')};
+    }
+
+    function renderCreationPreview() {
+      const values = readCreationValues();
+      const sandboxName = sandboxRecord(values.sandbox)?.name || '未关联';
+      document.getElementById('create-preview-name').textContent = values.name || '未命名智能体';
+      const preview = {...values,skills:values.skills.length + ' 个',sandbox:sandboxName,knowledgeLibrary:values.knowledgeLibrary ? '已开启' : '未开启',memoryLibrary:values.memoryLibrary ? '已开启' : '未开启'};
+      document.querySelectorAll('[data-preview]').forEach(item => { item.textContent = preview[item.dataset.preview]; });
+      const confirmation = {...preview,imageEnvironment:values.framework + ' / ' + values.environment,skills:Object.keys(createSkillNames).filter(key => values.skills.includes(key)).map(key => createSkillNames[key]).join('、'),knowledgeLibrary:values.knowledgeLibrary ? '已开启 · 自动安装云盘知识库 Skill' : '未开启'};
+      document.querySelectorAll('[data-confirm]').forEach(item => { item.textContent = confirmation[item.dataset.confirm]; });
+      for (const library of ['knowledge','memory']) {
+        const enabled = values[library + 'Library'];
+        const details = document.getElementById('create-' + library + '-details');
+        details.hidden = false;
+        const status = details.querySelector('.library-status');
+        status.textContent = enabled ? '已开启' : '未开启';
+        status.classList.toggle('disabled', !enabled);
+        const description = details.querySelector('.library-copy p');
+        description.textContent = enabled ? (library === 'knowledge' ? '已启用，智能体可使用本页全部知识内容。' : '已启用，智能体可读写记忆内容。') : (library === 'knowledge' ? '当前未启用，知识内容继续保留。' : '');
+        description.hidden = !description.textContent;
+      }
+      document.getElementById('create-sandbox-empty').hidden = !!values.sandbox;
+      document.getElementById('create-sandbox-details').hidden = !values.sandbox;
+      window.oasModules?.fillSandboxDetails('create-sandbox-details',values.sandbox);
+    }
+
+    function validateCreationName() {
+      const input = document.getElementById('create-name');
+      const name = input.value.trim();
+      const duplicate = agents.some(agent => loadAgentConfiguration(agent).name.toLowerCase() === name.toLowerCase());
+      const invalid = !name || duplicate;
+      const error = document.getElementById('create-name-error');
+      error.textContent = !name ? '请输入智能体名称' : '当前空间已存在同名智能体';
+      error.hidden = !invalid;
+      input.setAttribute('aria-invalid', String(invalid));
+      if (invalid) input.focus();
+      return !invalid;
+    }
+
+    function showCreationStep(step, focus = true) {
+      createStep = step;
+      createForm.querySelectorAll('[data-create-panel]').forEach(panel => { panel.hidden = Number(panel.dataset.createPanel) !== step; });
+      document.querySelectorAll('.create-step').forEach(button => {
+        const index = Number(button.dataset.step);
+        if (index === step) button.setAttribute('aria-current','step');
+        else button.removeAttribute('aria-current');
+        button.dataset.complete = String(index < step);
+        const number = button.querySelector('.step-number');
+        number.replaceChildren();
+        if (index < step) {
+          const icon = document.createElementNS('http://www.w3.org/2000/svg','svg');
+          const use = document.createElementNS('http://www.w3.org/2000/svg','use');
+          use.setAttribute('href','#check');
+          icon.append(use);
+          number.append(icon);
+        } else number.textContent = index;
+      });
+      document.getElementById('create-step-caption').textContent = '步骤 ' + step + ' / 4' + (step === 2 || step === 3 ? ' · 可稍后配置' : '');
+      document.getElementById('create-previous').hidden = step === 1;
+      document.getElementById('create-next').hidden = step === 4;
+      document.getElementById('create-submit').hidden = step !== 4;
+      renderCreationPreview();
+      if (focus) {
+        const button = document.querySelector('.create-step[data-step="' + step + '"]');
+        button.focus({preventScroll:true});
+        window.scrollTo(0,0);
+      }
+    }
+
+    document.getElementById('create-next').addEventListener('click', () => {
+      if (createStep === 1 && !validateCreationName()) return;
+      showCreationStep(Math.min(4,createStep + 1));
+    });
+    document.getElementById('create-previous').addEventListener('click', () => showCreationStep(Math.max(1,createStep - 1)));
+    document.querySelectorAll('.create-step').forEach(button => button.addEventListener('click', () => {
+      const target = Number(button.dataset.step);
+      if (target > 1 && !validateCreationName()) { showCreationStep(1, false); document.getElementById('create-name').focus(); return; }
+      showCreationStep(target);
+    }));
+    createForm.addEventListener('input', () => {
+      if (!document.getElementById('create-name-error').hidden) validateCreationName();
+      renderCreationPreview();
+    });
+    createForm.addEventListener('change', event => {
+      if (event.target.name === 'environment') {
+        const browser = document.querySelector('#create-sandbox option[value="browser"]');
+        if (browser) browser.disabled = event.target.value !== 'x86 · Linux';
+        if (browser?.disabled) document.getElementById('create-sandbox').value = '';
+      }
+      renderCreationPreview();
+    });
+    document.getElementById('create-view-sandbox').addEventListener('click', () => document.querySelector('#create-sandbox-details .sandbox-config-summary').focus());
+    createForm.addEventListener('submit', event => {
+      event.preventDefault();
+      if (createStep !== 4) { document.getElementById('create-next').click(); return; }
+      if (!validateCreationName()) { showCreationStep(1, false); return; }
+      const values = readCreationValues();
+      try { localStorage.setItem('oas-create-agent-submission', JSON.stringify(values)); } catch {}
+      createForm.dispatchEvent(new CustomEvent('agent-create', {bubbles:true,detail:values}));
+      // Local prototype records model creation and AIC assignment without calling a platform API.
+      const suffix = crypto.randomUUID().replaceAll('-','').slice(0,8);
+      const agent = {id:'agt_' + suffix,name:values.name,framework:values.framework,environment:values.environment,status:'运行中',updatedAt:currentAgentDateTime(),ownerPhone:'138****6621',aic:'1.2.156.3088.1.CMIC.A.1.1J.' + suffix.slice(0,7).toUpperCase()};
+      agents.unshift(agent);
+      persistAgents();
+      try { localStorage.setItem('oas-agent-' + agent.id + '-configuration',JSON.stringify({...values,version:1})); } catch {}
+      createForm.reset();
+      selectCreateSkillTab(createTabs[0]);
+      const browserOption = document.querySelector('#create-sandbox option[value="browser"]');
+      if (browserOption) browserOption.disabled = false;
+      showCreationStep(1,false);
+      agentListPage = 1;
+      document.getElementById('agent-search').value = '';
+      location.hash = agentLink('online-debug',agent.id);
+    });
+    document.querySelectorAll('[data-create-exit]').forEach(link => link.addEventListener('click', () => {
+      link.hash = lastAgentView;
+      createForm.reset();
+      document.getElementById('create-name-error').hidden = true;
+      document.getElementById('create-name').removeAttribute('aria-invalid');
+      const browserOption = document.querySelector('#create-sandbox option[value="browser"]');
+      if (browserOption) browserOption.disabled = false;
+      selectCreateSkillTab(createTabs[0]);
+      showCreationStep(1, false);
+    }));
+    showCreationStep(1, false);
+
+    function setPageView() {
+      const route = readRoute();
+      if (window.oasModules?.handles(route.view)) { if (route.view === 'quick') lastAgentView = '#quick'; window.oasModules.show(route.view); return; }
+      window.oasModules?.hide();
+      if (['online-debug','configuration'].includes(route.view) && !agents.some(agent => agent.id === route.agentId)) {
+        history.replaceState(null,'','#agents');
+        route.view = 'agents';
+      }
+      const chatting = route.view === 'online-debug';
+      const creating = route.view === 'create-agent';
+      const listing = !['online-debug','create-agent','configuration'].includes(route.view);
+      if (chatting || route.view === 'configuration') selectAgent(route.agentId);
+      if (!creating) lastAgentView = listing ? '#agents' : agentLink(chatting ? 'online-debug' : 'configuration');
+      document.body.classList.toggle('chat-view', chatting);
+      document.body.classList.toggle('create-view', creating);
+      document.body.classList.toggle('agents-view', listing);
+      form.hidden = chatting || creating || listing;
+      document.getElementById('online-debug').hidden = !chatting;
+      document.getElementById('create-agent').hidden = !creating;
+      document.getElementById('agents').hidden = !listing;
+      document.querySelector('[data-section-breadcrumb]').textContent = creating ? '快速创建智能体' : '智能体';
+      document.querySelector('[data-section-breadcrumb]').hidden = listing;
+      document.querySelector('[data-section-divider]').toggleAttribute('hidden',listing);
+      document.querySelector('[data-agent-breadcrumb]').hidden = creating || listing;
+      document.querySelector('[data-agent-divider]').toggleAttribute('hidden',creating || listing);
+      for (const [selector, active] of [['[data-nav-create]',creating],['[data-nav-agent]',!creating]]) {
+        const link = document.querySelector(selector);
+        link.classList.toggle('active',active);
+        if (active) link.setAttribute('aria-current','page');
+        else link.removeAttribute('aria-current');
+      }
+      const label = listing ? '智能体' : creating ? '创建智能体' : chatting ? '在线调试' : '编辑配置';
+      document.querySelector('.breadcrumbs [aria-current="page"]').textContent = label;
+      document.title = label + (creating || listing ? '' : ' · ' + appliedConfiguration.name) + ' · Open Agent Space';
+      if (listing) { agents = readAgents(); renderAgentList(); }
+      window.scrollTo(0,0);
+    }
+
+    renderDebugConversation();
+    setPageView();
+    window.addEventListener('hashchange', setPageView);
+  </script>
+<script src="./resource-shell.js"></script></body>
+</html>
